@@ -1,0 +1,285 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="" />
+	<meta name="author" content="Radek Kozieł (@panr)" />
+	<meta name="viewport"
+		content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+	<title>Terminal.css</title>
+	<link href="./terminal.css" rel="stylesheet" />
+	<style>
+		#headline { display: flex; white-space: nowrap; line-height: 1; }
+		#headline::after { 
+			content: '';
+			background: repeating-linear-gradient(90deg, var(--accent), var(--accent) 2px, transparent 0, transparent 10px);
+			display: block;
+			width: 100%;
+			margin-left: 20px;
+			right: 10px; 
+		}
+		#settings { display: flex; align-items: center; }
+		#settings input { height: 30px; padding: 4px; margin-left: 4px; margin-right: 20px; border-radius: 0 !important; }
+		.hanchor {
+			color: var(--accent);
+			font-weight: normal;
+			text-decoration: none;
+			margin-left: 10px;
+			visibility: hidden;
+		}
+	</style>
+
+</head>
+
+<body>
+	<main style="padding: 20px">
+		<h1 id="headline">Terminal.css</h1>
+		<form id="settings">
+			Background: <input type="color" id="background" name="background" onchange="setVariable('--background', this.value)">
+			Foreground: <input type="color" id="foreground" name="foreground" onchange="setVariable('--foreground', this.value)">
+			Accent: <input type="color" id="accent" name="accent" onchange="setVariable('--accent', this.value)">
+			Radius: <input type="number" id="radius" name="radius" onchange="setVariable('--radius', this.value + 'px')">
+			<button type="submit">Get Terminal.css</button>
+		</form>
+
+		<hr>
+
+		<div>
+			<h2 id="headings">
+				Headings<a href="#headings" class="hanchor" arialabel="Anchor">#</a>
+			</h2>
+
+			<p>
+				The following HTML <code>&lt;h1&gt;</code>—<code>&lt;h6&gt;</code>
+				elements represent six levels of section headings.
+				<code>&lt;h1&gt;</code> is the highest section level while
+				<code>&lt;h6&gt;</code> is the lowest.
+			</p>
+
+			<h1 id="h1">
+				H1
+			</h1>
+
+			<h2 id="h2">
+				H2
+			</h2>
+
+			<h3 id="h3">
+				H3
+			</h3>
+
+			<h4 id="h4">
+				H4
+			</h4>
+
+			<h5 id="h5">
+				H5
+			</h5>
+
+			<h6 id="h6">
+				H6
+			</h6>
+
+			<h2 id="paragraph">
+				Paragraphs<a href="#paragraph" class="hanchor" arialabel="Anchor">#</a>
+			</h2>
+
+			<p>
+				This HTML element represents a paragraph. Paragraphs are usually represented in visual media as blocks of text separated from adjacent blocks by blank lines and/or first-line indentation, but HTML paragraphs can be any structural grouping of related content, such as images or form fields.
+			</p>
+
+			<p>
+				Paragraphs are block-level elements, and notably will automatically close if another block-level element is parsed before the closing tag
+			</p>
+
+			<h2 id="blockquotes">
+				Blockquotes<a href="#blockquotes" class="hanchor" arialabel="Anchor">#</a>
+			</h2>
+
+			<blockquote>
+				<p>
+					The blockquote element represents content that is quoted from
+					another source, optionally with a citation which must be within a
+					<code>footer</code> or <code>cite</code> element, and optionally
+					with in-line changes such as annotations and abbreviations.
+				</p>
+			</blockquote>
+
+			<h2 id="buttons">
+				Buttons and links<a href="#buttons" class="hanchor" arialabel="Anchor">#</a>
+			</h2>
+
+			<button>Button</button>
+			<a href="">Link</a>
+
+			<h2 id="tables">
+				Tables<a href="#tables" class="hanchor" arialabel="Anchor">#</a>
+			</h2>
+
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Age</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Bob</td>
+						<td>27</td>
+					</tr>
+					<tr>
+						<td>Alice</td>
+						<td>23</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h2 id="forms">
+				Forms<a href="#forms" class="hanchor" arialabel="Anchor">#</a>
+			</h2>
+
+			<fieldset>
+				<input type="text" placeholder="Type something" /><br />
+				<input type="number" placeholder="Insert number" /><br />
+				<input type="text" value="Input value" /><br />
+				<select>
+					<option value="1">Option 1</option>
+					<option value="2">Option 2</option>
+					<option value="3">Option 3</option>
+				</select><br />
+				<textarea placeholder="Insert a comment..."></textarea><br />
+				<input type="checkbox" /> I understand<br />
+				<button type="submi">Submit</button>
+			</fieldset>
+
+			<h2 id="code-blocks">
+				Code Blocks<a href="#code-blocks" class="hanchor" arialabel="Anchor">#</a>
+			</h2>
+
+			<pre><code>pre {
+  display: block;
+  font-family: monospace;
+  white-space: pre;
+  margin: 1em 0;
+}</code></pre>
+
+			<h2 id="list-types">
+				List Types<a href="#list-types" class="hanchor" arialabel="Anchor">#</a>
+			</h2>
+
+			<h4 id="ordered-list">
+				Ordered List<a href="#ordered-list" class="hanchor" arialabel="Anchor">#</a>
+			</h4>
+
+			<ol>
+				<li>Item</li>
+				<li>Item</li>
+				<li>Item</li>
+				<li>Item</li>
+				<li>Item</li>
+				<li>Item</li>
+				<li>Item</li>
+				<li>Item</li>
+				<li>Item</li>
+				<li>Item</li>
+			</ol>
+
+			<h4 id="unordered-list">
+				Unordered List<a href="#unordered-list" class="hanchor" arialabel="Anchor">#</a>
+			</h4>
+
+			<ul>
+				<li>Item</li>
+				<li>Item</li>
+				<li>Item</li>
+				<li>Item</li>
+				<li>Item</li>
+				<li>Item</li>
+			</ul>
+
+			<h4 id="nested-list">
+				Nested list<a href="#nested-list" class="hanchor" arialabel="Anchor">#</a>
+			</h4>
+
+			<ul>
+				<li>
+					Item
+					<ul>
+						<li>Nested item</li>
+						<li>Nested item</li>
+						<li>Nested item</li>
+					</ul>
+				</li>
+				<li>
+					Item
+					<ul>
+						<li>Nested item</li>
+						<li>Nested item</li>
+						<li>Nested item</li>
+					</ul>
+				</li>
+			</ul>
+
+			<h2 id="other-elements--abbr-sub-sup-kbd-mark">
+				Other Elements — abbr, sub, sup, kbd, mark<a href="#other-elements--abbr-sub-sup-kbd-mark" class="hanchor"
+					arialabel="Anchor">#</a>
+			</h2>
+
+			<p>Text<sup>sup</sup></p>
+			<p>Text<sub>sub</sub></p>
+			<p><abbr data-abbr="Abbreviation">Abbr.</abbr></p>
+			<p><kbd>Kbd</kbd></p>
+			<p><mark>Marked</mark></p>
+		</div>
+	</main>
+
+	<script>
+		const root = document.querySelector(":root");
+		const defaultValues = {
+			background: "#222129",
+			foreground: "#ffffff",
+			accent: "#ffa86a",
+			radius: "0"
+		}
+
+		const settings = document.querySelectorAll("#settings input")
+		for (const i of settings) {
+			if (defaultValues[i.name]) {
+				i.value = defaultValues[i.name]
+			}
+		}
+
+		function setVariable(variable, value) { root.style.setProperty(variable, value); }
+		function getTerminalCSS(e) {
+			return fetch("./terminal.css")
+				.then(function (req) {
+					if (!req.ok) {
+						alert("Oops, please try again");
+						throw new Error(`Oops, please try again. Status: ${req.status}. Message: ${req.statusText}`)
+					}
+
+					return req.text();
+				}).then(function (data) {
+					const s = new FormData(document.querySelector("#settings"))
+					data = data.replace(`--background: ${defaultValues["background"]}`, `--background: ${s.get("background")}`)
+					data = data.replace(`--foreground: ${defaultValues["foreground"]}`, `--foreground: ${s.get("foreground")}`)
+					data = data.replace(`--accent: ${defaultValues["accent"]}`, `--accent: ${s.get("accent")}`)
+					data = data.replace(`--radius: ${defaultValues["radius"]}`, `--radius: ${s.get("radius")}px`)
+
+					const a = document.createElement('a')
+					a.href = window.URL.createObjectURL(new Blob([data], { type: "text/css" }))
+					a.download = "terminal.css"
+					a.click()
+				})
+		}
+		const settingsForm = document.querySelector("#settings")
+		settingsForm.addEventListener("submit", function(e) {
+			e.preventDefault()
+			getTerminalCSS(e)
+		})
+	</script>
+</body>
+
+</html>
