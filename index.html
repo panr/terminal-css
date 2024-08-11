@@ -3,7 +3,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="description" content="" />
+	<meta name="description" content="A custom set of semantic styles derived from Terminal Theme for Hugo you always wanted." />
 	<meta name="author" content="Radek Kozieł (@panr)" />
 	<meta name="viewport"
 		content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
@@ -19,7 +19,8 @@
 			margin-left: 20px;
 			right: 10px; 
 		}
-		#settings { display: flex; align-items: center; }
+		#settings { display: flex; flex-wrap: wrap; align-items: center; }
+		#settings label { display: flex; align-items: center; }
 		#settings input { height: 30px; padding: 4px; margin-left: 4px; margin-right: 20px; border-radius: 0 !important; }
 		.hanchor {
 			color: var(--accent);
@@ -32,14 +33,16 @@
 
 </head>
 
-<body>
-	<main style="padding: 20px">
+<body style="padding: 20px">
+	<main>
 		<h1 id="headline">Terminal.css</h1>
-		<form id="settings">
-			Background: <input type="color" id="background" name="background" onchange="setVariable('--background', this.value)">
-			Foreground: <input type="color" id="foreground" name="foreground" onchange="setVariable('--foreground', this.value)">
-			Accent: <input type="color" id="accent" name="accent" onchange="setVariable('--accent', this.value)">
-			Radius: <input type="number" id="radius" name="radius" onchange="setVariable('--radius', this.value + 'px')">
+		<p>A stupid simple, custom set of semantic styles derived from <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Terminal</a> theme that you always wanted.
+</p>
+		<form id="settings" style="margin-bottom: 20px;">
+			<label>Background: <input type="color" id="background" name="background" onchange="setVariable('--background', this.value)"></label>
+			<label>Foreground: <input type="color" id="foreground" name="foreground" onchange="setVariable('--foreground', this.value)"></label>
+			<label>Accent: <input type="color" id="accent" name="accent" onchange="setVariable('--accent', this.value)"></label>
+			<label>Radius: <input type="number" id="radius" name="radius" min="0" max="12" onchange="setVariable('--radius', this.value + 'px')"></label>
 			<button type="submit">Get Terminal.css</button>
 		</form>
 
@@ -234,6 +237,10 @@
 			<p><mark>Marked</mark></p>
 		</div>
 	</main>
+	
+	<footer style="border-top: 1px solid var(--accent); margin-top: 40px; padding-top: 20px;">
+		Made by <a href="https://radoslawkoziel.pl" target="_blank">panr</a>. Derived from <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Terminal</a> theme.
+	</footer>
 
 	<script>
 		const root = document.querySelector(":root");
