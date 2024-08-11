@@ -68,7 +68,8 @@ a.button:hover {
 }
 button:focus-visible,
 .button:focus-visible,
-a.button:focus-visible {
+a.button:focus-visible,
+a:focus-visible {
   outline: 1px solid var(--accent);
   outline-offset: 2px;
 }
