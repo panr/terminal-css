@@ -290,6 +290,15 @@
 					data = data.replace(`--accent: ${defaultValues["accent"]}`, `--accent: ${s.get("accent")}`)
 					data = data.replace(`--radius: ${defaultValues["radius"]}`, `--radius: ${s.get("radius")}px`)
 
+					window.dataLayer = window.dataLayer || []
+					window.dataLayer.push({
+					  event: "Download",
+						bg: s.get("background"),
+						fg: s.get("foreground"),
+						accent: s.get("accent"),
+						radius: s.get("radius"),
+					})
+
 					const a = document.createElement('a')
 					a.href = window.URL.createObjectURL(new Blob([data], { type: "text/css" }))
 					a.download = "terminal.css"
