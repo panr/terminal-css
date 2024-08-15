@@ -160,6 +160,7 @@ kbd kbd {
   margin: 0;
 }
 pre {
+  tab-size: 4;
   background: color-mix(in srgb, var(--accent) 10%, transparent) !important;
   color: var(--foreground);
   padding: 20px 10px;
