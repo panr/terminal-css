@@ -132,9 +132,33 @@ input[type="checkbox"]:checked {
 img {
   display: block;
   max-width: 100%;
+  border: 8px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 8px;
+  overflow: hidden;
+}
+figure figcaption {
+  background: var(--accent);
+  color: var(--background);
+  text-align: center;
+  font-size: 1rem;
+  font-weight: normal;
+  margin-top: -8px;
 }
 p {
   margin-bottom: 20px;
+}
+ul,
+ol {
+  margin-left: 4ch;
+  padding: 0;
+}
+li::marker {
+  color: var(--accent);
+}
+ul li,
+ol li {
+  position: relative;
 }
 code,
 kbd {
@@ -151,10 +175,14 @@ kbd {
   margin: 0 2px;
   font-size: 0.95rem;
 }
-code code,
-code kbd,
-kbd code,
-kbd kbd {
+kbd {
+  border-top: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  border-left: 1px solid var(--accent);
+  border-right: 1px solid var(--accent);
+  border-bottom: 4px solid var(--accent);
+  border-radius: 4px;
+}
+code code {
   background: transparent;
   padding: 0;
   margin: 0;
@@ -176,70 +204,8 @@ pre code {
   font-size: inherit;
   border: none;
 }
-blockquote {
-  border-top: 1px solid var(--accent);
-  border-bottom: 1px solid var(--accent);
-  margin: 0;
-  padding: 25px;
-}
-blockquote p:first-of-type {
-  margin-top: 0;
-}
-blockquote p:last-of-type {
-  margin-bottom: 0;
-}
-blockquote p {
-  position: relative;
-}
-blockquote p:first-of-type:before {
-  content: ">";
-  display: block;
-  position: absolute;
-  left: -25px;
-  color: var(--accent);
-}
-table {
-  table-layout: auto;
-  border-collapse: collapse;
-}
-table,
-th,
-td {
-  border: 1px dashed var(--accent);
-  padding: 10px;
-}
-th {
-  border-style: solid;
-  background: color-mix(in srgb, var(--accent) 10%, transparent);
-  color: var(--accent);
-  text-align: left;
-}
-ul,
-ol {
-  margin-left: 4ch;
-  padding: 0;
-}
-li::marker {
-  color: var(--accent);
-}
-ul li,
-ol li {
-  position: relative;
-}
-hr {
-  width: 100%;
-  border: none;
-  background: var(--accent);
-  height: 1px;
-}
 sup {
   line-height: 0;
-}
-h1:hover a,
-h2:hover a,
-h3:hover a,
-h4:hover a {
-  visibility: visible;
 }
 abbr {
   position: relative;
@@ -263,14 +229,49 @@ sub {
 sup {
   top: -0.25em;
 }
-kbd {
-  border-top: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
-  border-left: 1px solid var(--accent);
-  border-right: 1px solid var(--accent);
-  border-bottom: 4px solid var(--accent);
-  border-radius: 4px;
-}
 mark {
   background: color-mix(in srgb, var(--accent) 45%, transparent);
   color: var(--foreground);
+}
+blockquote {
+  position: relative;
+  border-top: 1px solid var(--accent);
+  border-bottom: 1px solid var(--accent);
+  margin: 0;
+  padding: 25px;
+}
+blockquote:before {
+  content: ">";
+  display: block;
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+blockquote p:first-of-type {
+  margin-top: 0;
+}
+blockquote p:last-of-type {
+  margin-bottom: 0;
+}
+table {
+  table-layout: auto;
+  border-collapse: collapse;
+}
+table,
+th,
+td {
+  border: 1px dashed var(--accent);
+  padding: 10px;
+}
+th {
+  border-style: solid;
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  color: var(--accent);
+  text-align: left;
+}
+hr {
+  width: 100%;
+  border: none;
+  background: var(--accent);
+  height: 1px;
 }

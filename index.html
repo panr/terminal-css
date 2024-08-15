@@ -44,6 +44,12 @@
 			margin-left: 10px;
 			visibility: hidden;
 		}
+		h1:hover .hanchor,
+		h2:hover .hanchor,
+		h3:hover .hanchor,
+		h4:hover .hanchor {
+			visibility: visible;
+		}
 	</style>
 </head>
 
@@ -91,6 +97,17 @@
 			<p>
 				Paragraphs are block-level elements, and notably will automatically close if another block-level element is parsed before the closing tag
 			</p>
+
+			<h2 id="images">
+				Images<a href="#images" class="hanchor" arialabel="Anchor">#</a>
+				<img src="./terminal-css.png" alt="Terminal.css preview" loading="lazy" >
+
+				<h3>Figures with caption</h3>
+				<figure style="margin: 10px 0;">
+					<img src="./terminal-css.png" alt="Terminal.css preview" loading="lazy" >
+					<figcaption>Terminal.css preview</figcaption>
+				</figure> 
+			</h2>
 
 			<h2 id="blockquotes">
 				Blockquotes<a href="#blockquotes" class="hanchor" arialabel="Anchor">#</a>
@@ -168,9 +185,9 @@
 				List Types<a href="#list-types" class="hanchor" arialabel="Anchor">#</a>
 			</h2>
 
-			<h4 id="ordered-list">
+			<h3 id="ordered-list">
 				Ordered List<a href="#ordered-list" class="hanchor" arialabel="Anchor">#</a>
-			</h4>
+			</h3>
 
 			<ol>
 				<li>Item</li>
@@ -185,9 +202,9 @@
 				<li>Item</li>
 			</ol>
 
-			<h4 id="unordered-list">
+			<h3 id="unordered-list">
 				Unordered List<a href="#unordered-list" class="hanchor" arialabel="Anchor">#</a>
-			</h4>
+			</h3>
 
 			<ul>
 				<li>Item</li>
@@ -198,9 +215,9 @@
 				<li>Item</li>
 			</ul>
 
-			<h4 id="nested-list">
+			<h3 id="nested-list">
 				Nested list<a href="#nested-list" class="hanchor" arialabel="Anchor">#</a>
-			</h4>
+			</h3>
 
 			<ul>
 				<li>
