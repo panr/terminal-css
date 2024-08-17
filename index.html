@@ -288,13 +288,9 @@
 					data = data.replace(`--accent: ${defaultValues["accent"]}`, `--accent: ${s.get("accent")}`)
 					data = data.replace(`--radius: ${defaultValues["radius"]}`, `--radius: ${s.get("radius")}px`)
 
-					window.dataLayer = window.dataLayer || []
-					window.dataLayer.push({
-						event: "Download",
-						bg: s.get("background"),
-						fg: s.get("foreground"),
-						accent: s.get("accent"),
-						radius: s.get("radius"),
+					gtag("event", "click", {
+						event_category: "download",
+						event_label: `bg: ${s.get("background")}, fg: ${s.get("foreground")}, accent: ${s.get("accent")}, radius: ${s.get("radius")}`
 					})
 
 					const a = document.createElement('a')
