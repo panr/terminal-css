@@ -39,6 +39,7 @@
 		#settings input:not([type="checkbox"]) { height: 30px; padding: 4px; margin-left: 4px; margin-right: 20px; border-radius: 0 !important; }
 		#settings select { height: 30px; padding-top: 0; padding-bottom: 0; margin-left: 4px; margin-right: 20px; border-radius: 0 !important }
 		#settings #assets-preview svg { border: 1px solid }
+		#settings #terminal-info { border: 1px dashed var(--accent); padding: 2px 4px; margin-bottom: 5px; }
 		.hanchor {
 			color: var(--accent);
 			font-weight: normal;
@@ -74,6 +75,12 @@
 				</label>
 				<div style="margin: 10px 0; padding: 2px 4px; border: 1px dashed color-mix(in srgb, var(--foreground) 50%, transparent);">
 					Type: <strong>Standalone</strong> — includes FireCode font from Google Fonts; <strong>Terminal Theme</strong> — is prepared for Terminal Theme.
+				</div>
+				<div id="terminal-info" hidden>
+					<strong>Terminal Theme</strong>: Remember to put all the downloaded files directly into <strong><code>/static/</code></strong> folder to make it work, like this:<br>
+					- <code>/static/terminal.css</code><br>
+					- <code>/static/favicon.png</code><br>
+					- <code>/static/og-image.png</code><br>
 				</div>
 			</div>
 			<div>

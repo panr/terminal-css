@@ -76,6 +76,12 @@ function getTerminalCSS(e) {
     })
 }
 
+const typeInput = document.querySelector(`#settings select[name="type"]`)
+typeInput.addEventListener("change", e => {
+  const terminalInfo = document.querySelector("#terminal-info")
+  terminalInfo.hidden = !(e.currentTarget.value === "terminal")
+})
+
 const settingFormSubmitButton = document.querySelector(`#settings button[type="submit"]`)
 const defaultButtonText = settingFormSubmitButton.textContent
 
