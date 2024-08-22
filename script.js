@@ -69,10 +69,7 @@ function getTerminalCSS(e) {
       a.download = "terminal.css"
       a.click()
 
-
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: "download",
+      gtag('event', "download", {
         background: s.get("background"),
         foreground: s.get("foreground"),
         accent: s.get("accent"),
