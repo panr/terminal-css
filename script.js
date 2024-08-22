@@ -69,9 +69,15 @@ function getTerminalCSS(e) {
       a.download = "terminal.css"
       a.click()
 
-      gtag("event", "download", {
-        event_category: "download",
-        event_label: `bg: ${s.get("background")}, fg: ${s.get("foreground")}, accent: ${s.get("accent")}, radius: ${s.get("radius")}, type: ${s.get("type")}`
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "download",
+        background: s.get("background"),
+        foreground: s.get("foreground"),
+        accent: s.get("accent"),
+        radius: s.get("radius"),
+        type: s.get("type")
       })
     })
 }
