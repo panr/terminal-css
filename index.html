@@ -21,7 +21,7 @@
 		#headline { display: flex; white-space: nowrap; line-height: 1; }
 		#headline::after {
 			content: '';
-			background: repeating-linear-gradient(90deg, var(--accent), var(--accent) 2px, transparent 0, transparent 10px);
+			background: repeating-linear-gradient(90deg, var(--accent), var(--accent) 2px, transparent 0, transparent 8px);
 			display: block;
 			width: 100%;
 			margin-left: 20px;
@@ -29,11 +29,16 @@
 		}
 		#settings #attrs { display: flex; flex-wrap: wrap; align-items: center; }
 		#settings label { display: inline-flex; align-items: center; }
-		#settings input:not([type="checkbox"]) { height: 30px; padding: 4px; margin-left: 4px; margin-right: 20px; border-radius: 0 !important; }
-		#settings select { height: 30px; padding-top: 0; padding-bottom: 0; margin-left: 4px; margin-right: 20px; border-radius: 0 !important }
+		#settings table { width: 100%; max-width: 100%; margin-bottom: 0; }
+		#settings table th, #settings table td { position: relative; }
+		#settings table input:not([type="checkbox"]), #settings table select { width: 100%; border: none; margin: 0; border-radius: 0 !important; }
+		#settings table input:not([type="checkbox"]) { position: absolute; top: 0; left: 0; height: 100%; }
+		#settings table input[type="number"] { padding: 0 10px; }
+		#settings table select { padding-top: 0; padding-bottom: 0; padding-left: 0; }
 		#settings #assets-preview svg { border: 1px solid }
 		#settings #terminal-info { border: 1px dashed var(--accent); padding: 2px 4px; margin-bottom: 5px; }
 		.hanchor {
+			position: absolute;
 			color: var(--accent);
 			font-weight: normal;
 			text-decoration: none;
@@ -50,34 +55,54 @@
 </head>
 
 <body style="padding: 20px">
-	<main>
+	<main style="width: 1024px; max-width: 100%;">
 		<h1 id="headline">Terminal.css</h1>
 		<p>A stupid simple, custom set of semantic styles derived from <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Terminal</a> theme that you always wanted.</p>
+
 		<form id="settings" style="margin-bottom: 20px;">
-			<div id="attrs">
-				<label>Background: <input type="color" id="background" name="background" onchange="setVariable('--background', this.value)"></label>
-				<label>Foreground: <input type="color" id="foreground" name="foreground" onchange="setVariable('--foreground', this.value)"></label>
-				<label>Accent: <input type="color" id="accent" name="accent" onchange="setVariable('--accent', this.value)"></label>
-				<label>Radius: <input type="number" id="radius" name="radius" min="0" max="12" onchange="setVariable('--radius', this.value + 'px')"></label>
-				<label>
-					Type:
-					<select name="type">
-						<option name="standalone" value="standalone">Standalone</option>
-						<option name="terminal" value="terminal">Terminal Theme</option>
-					</select>
-				</label>
-				<div style="margin: 10px 0; padding: 2px 4px; border: 1px dashed color-mix(in srgb, var(--foreground) 50%, transparent);">
-					Type: <strong>Standalone</strong> — includes FireCode font from Google Fonts; <strong>Terminal Theme</strong> — is prepared for Terminal Theme.
-				</div>
-				<div id="terminal-info" hidden>
-					<strong>Terminal Theme</strong>: Remember to put all the downloaded files directly into <strong><code>/static/</code></strong> folder to make it work, like this:<br>
-					- <code>/static/terminal.css</code><br>
-					- <code>/static/favicon.png</code><br>
-					- <code>/static/og-image.png</code><br>
-				</div>
+			<table>
+				<tbody>
+					<tr>
+						<th colspan="2" style="text-align: center;">Settings</th>
+					</tr>
+					<tr>
+						<th>Background</th>
+						<td><input type="color" id="background" name="background" onchange="setVariable('--background', this.value)"></td>
+					</tr>
+					<tr>
+						<th>Foreground</th>
+						<td><input type="color" id="foreground" name="foreground" onchange="setVariable('--foreground', this.value)"></td>
+					</tr>
+					<tr>
+						<th>Accent</th>
+						<td><input type="color" id="accent" name="accent" onchange="setVariable('--accent', this.value)"></td>
+					</tr>
+					<tr>
+						<th>Radius</th>
+						<td><input type="number" id="radius" name="radius" min="0" max="8" value="0" onchange="setVariable('--radius', this.value + 'px')"></td>
+					</tr>
+					<tr>
+						<th>Type</th>
+						<td>
+							<select name="type">
+								<option name="standalone" value="standalone">Standalone</option>
+								<option name="terminal" value="terminal">Terminal Theme</option>
+							</select>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div style="margin: 10px 0 20px; opacity: .6;">
+				Type:<br><strong>Standalone</strong> — includes FireCode font from Google Fonts;<br><strong>Terminal Theme</strong> — is prepared for Terminal Theme.
+			</div>
+			<div id="terminal-info" hidden>
+				<strong>Terminal Theme</strong>: Remember to put all the downloaded files directly into <strong><code>/static/</code></strong> folder to make it work, like this:<br>
+				- <code>/static/terminal.css</code><br>
+				- <code>/static/favicon.png</code><br>
+				- <code>/static/og-image.png</code><br>
 			</div>
 			<div>
-				<label style="display: block;"><input id="assets" type="checkbox" name="assets">&nbsp;Generate&nbsp;<strong>favicon</strong>&nbsp;and&nbsp;<strong>og-image</strong></label>
+				<label style="display: block; margin-bottom: 20px;"><input id="assets" type="checkbox" name="assets">&nbsp;Generate&nbsp;<strong>favicon</strong>&nbsp;and&nbsp;<strong>og-image</strong></label>
 				<div id="assets-preview" hidden>
 					<svg id="template-favicon" width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" style="width: 50px; height: 50px;"><rect width="50" height="50" x="0" y="0" fill="var(--accent)" /></svg>
 					<svg id="template-og-image" width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 400px; height: 210px;">
@@ -103,7 +128,7 @@
 						</g>
 					</svg>
 				</div>
-				<button id="download" type="submit">Get Terminal.css</button>
+				<button id="download" type="submit">Download Terminal.css</button>
 			</div>
 		</form>
 
@@ -121,12 +146,12 @@
 				<code>&lt;h6&gt;</code> is the lowest.
 			</p>
 
-			<h1 id="h1">H1</h1>
-			<h2 id="h2">H2</h2>
-			<h3 id="h3">H3</h3>
-			<h4 id="h4">H4</h4>
-			<h5 id="h5">H5</h5>
-			<h6 id="h6">H6</h6>
+			<h1 id="h1">h1</h1>
+			<h2 id="h2">h2</h2>
+			<h3 id="h3">h3</h3>
+			<h4 id="h4">h4</h4>
+			<h5 id="h5">h5</h5>
+			<h6 id="h6">h6</h6>
 
 			<h2 id="paragraph">
 				Paragraphs<a href="#paragraph" class="hanchor" arialabel="Anchor">#</a>
@@ -208,7 +233,7 @@
 					<option value="3">Option 3</option>
 				</select><br />
 				<textarea placeholder="Insert a comment..."></textarea><br />
-				<input type="checkbox" /> I understand<br />
+				<label><input type="checkbox" /> I understand<br /></label>
 				<button type="submi">Submit</button>
 			</fieldset>
 
@@ -293,7 +318,7 @@
 		</div>
 	</main>
 
-	<footer style="border-top: 1px solid var(--accent); margin-top: 40px; padding-top: 20px;">
+	<footer style="border-top: 2px solid var(--accent); margin-top: 40px; padding-top: 20px;">
 		Made by <a href="https://radoslawkoziel.pl" target="_blank">panr</a>. Derived from <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Terminal</a> theme. Source code on <a href="https://github.com/panr/terminal-css/" target="_blank">Github</a>.
 	</footer>
 

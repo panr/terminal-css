@@ -1,9 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Fira+Code&family=Fira+Code:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code&family=Fira+Code:wght@400;700&display=swap");
 
 :root {
   --background: #222129;
   --foreground: #ffffff;
   --accent: #ffa86a;
+  --font-size: 1rem;
+  --line-height: 1.54rem;
   --radius: 0;
 }
 
@@ -15,6 +17,8 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -27,7 +31,8 @@ body {
     Ubuntu Mono,
     monospace;
   font-size: 1rem;
-  line-height: 1.54;
+  font-weight: 400;
+  line-height: var(--line-height);
   letter-spacing: -0.02em;
   background-color: var(--background);
   color: var(--foreground);
@@ -43,23 +48,57 @@ body {
   color: color-mix(in srgb var(--foreground) 50%, black);
 }
 
+h1,
+h2 {
+  font-size: calc(var(--font-size) * 1.1);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+h1 {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: calc(var(--font-size) * 0.2);
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: calc(var(--font-size) * 1.1);
+  letter-spacing: 0.04em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+img,
+figure,
+video,
+table {
+  margin: calc(var(--line-height) * 1.2) 0;
+}
+
 a {
   color: var(--accent);
 }
 
-button,
-.button,
-a.button {
+button {
   position: relative;
   font: inherit;
   font-weight: bold;
   text-decoration: none;
   text-align: center;
-  background: var(--accent);
-  color: var(--background);
+  background: transparent;
+  color: var(--accent);
   padding: 5px 18px;
-  margin: 5px 0;
-  border: 1px solid var(--accent);
+  border: 4px solid var(--accent);
   border-radius: var(--radius);
   transition: background 0.15s linear;
   appearance: none;
@@ -67,15 +106,11 @@ a.button {
   outline: none;
 }
 
-button:hover,
-.button:hover,
-a.button:hover {
-  background: color-mix(in srgb, var(--accent) 85%, transparent);
+button:hover {
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
 }
 
 button:focus-visible,
-.button:focus-visible,
-a.button:focus-visible,
 a:focus-visible {
   outline: 1px solid var(--accent);
   outline-offset: 2px;
@@ -83,7 +118,30 @@ a:focus-visible {
 
 fieldset {
   display: inline-block;
-  border: 1px dashed var(--foreground);
+  border: 2px solid var(--foreground);
+  border-radius: calc(var(--radius) * 1.6);
+  padding: 10px;
+}
+
+fieldset *:first-child {
+  margin-top: 0;
+}
+
+fieldset input,
+fieldset select,
+fieldset textarea,
+fieldset label,
+fieldset button {
+  margin-top: calc(var(--line-height) * 0.5);
+  width: 100%;
+}
+
+label {
+  display: inline-block;
+}
+
+label input {
+  margin-top: 0;
 }
 
 input,
@@ -94,9 +152,12 @@ select {
   border: 1px solid var(--foreground);
   border-radius: var(--radius);
   padding: 10px;
-  margin: 5px 0;
   font: inherit;
   appearance: none;
+}
+
+input[type="checkbox"] {
+  width: auto;
 }
 
 input:focus-visible,
@@ -154,6 +215,11 @@ img {
   overflow: hidden;
 }
 
+figure img,
+figure video {
+  margin-bottom: 0;
+}
+
 figure figcaption {
   background: var(--accent);
   color: var(--background);
@@ -161,16 +227,20 @@ figure figcaption {
   font-size: 1rem;
   font-weight: normal;
   margin-top: -8px;
-}
-
-p {
-  margin-bottom: 20px;
+  border-radius: 0 0 var(--radius) var(--radius);
 }
 
 ul,
 ol {
   margin-left: 4ch;
   padding: 0;
+}
+
+ul ul,
+ul ol,
+ol ul,
+ol ol {
+  margin-top: 0;
 }
 
 li::marker {
@@ -191,7 +261,7 @@ kbd {
     Ubuntu Mono,
     monospace !important;
   font-feature-settings: normal;
-  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
   color: var(--accent);
   padding: 1px 6px;
   margin: 0 2px;
@@ -214,13 +284,13 @@ code code {
 
 pre {
   tab-size: 4;
-  background: color-mix(in srgb, var(--accent) 5%, transparent) !important;
+  background: color-mix(in srgb, var(--foreground) 5%, transparent) !important;
   color: var(--foreground);
   padding: 20px 10px;
   font-size: 0.95rem !important;
   overflow: auto;
   border-radius: var(--radius);
-  border: 1px solid color-mix(in srgb, var(--accent) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
 }
 
 pre code {
@@ -287,20 +357,21 @@ table {
 table,
 th,
 td {
-  border: 1px dashed var(--accent);
+  border: 2px solid var(--foreground);
   padding: 10px;
 }
 
 th {
   border-style: solid;
-  background: color-mix(in srgb, var(--accent) 10%, transparent);
-  color: var(--accent);
+  color: var(--foreground);
   text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 hr {
   width: 100%;
   border: none;
   background: var(--accent);
-  height: 1px;
+  height: 2px;
 }
