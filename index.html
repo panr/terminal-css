@@ -11,10 +11,20 @@
 
 		gtag('config', 'G-T1DS3R5LFM');
 	</script>
+	<title>Terminal.css | Semantic styles for the simple web</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="description" content="A custom set of semantic styles derived from Terminal Theme for Hugo you always wanted." />
 	<meta name="author" content="Radek Kozieł (@panr)" />
 	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+	<!-- OG data -->
+	<meta property="og:locale" content="en" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Terminal.css">
+	<meta property="og:description" content="A custom set of semantic styles derived from Terminal Theme for Hugo you always wanted." />
+	<meta property="og:url" content="https://panr.github.io/terminal-css/" />
+	<meta property="og:site_name" content="Terminal.css" />
+	<meta property="og:image" content="./og-image.png">
+	<link rel="shortcut icon" href="./favicon.png"">
 	<title>Terminal.css</title>
 	<link href="./terminal.css" rel="stylesheet" />
 	<style>
@@ -29,7 +39,7 @@
 		}
 		#settings #attrs { display: flex; flex-wrap: wrap; align-items: center; }
 		#settings label { display: inline-flex; align-items: center; }
-		#settings table { width: 100%; max-width: 100%; margin-bottom: 0; }
+		#settings table { width: 100%; max-width: 100%; margin-bottom: 0; table-layout: fixed; }
 		#settings table th, #settings table td { position: relative; }
 		#settings table input:not([type="checkbox"]), #settings table select { width: 100%; border: none; margin: 0; border-radius: 0 !important; }
 		#settings table input:not([type="checkbox"]) { position: absolute; top: 0; left: 0; height: 100%; }
@@ -95,7 +105,7 @@
 			<div style="margin: 10px 0 20px; opacity: .6;">
 				Type:<br><strong>Standalone</strong> — includes FireCode font from Google Fonts;<br><strong>Terminal Theme</strong> — is prepared for Terminal Theme.
 			</div>
-			<div id="terminal-info" hidden>
+			<div id="terminal-info" hidden style="margin: 20px 0;">
 				<strong>Terminal Theme</strong>: Remember to put all the downloaded files directly into <strong><code>/static/</code></strong> folder to make it work, like this:<br>
 				- <code>/static/terminal.css</code><br>
 				- <code>/static/favicon.png</code><br>

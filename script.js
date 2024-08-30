@@ -1,8 +1,8 @@
 const root = document.querySelector(":root");
 const defaultValues = {
-  background: "#222129",
-  foreground: "#ffffff",
-  accent: "#ffa86a",
+  background: "#1a170f",
+  foreground: "#eceae5",
+  accent: "#eec35e",
   radius: "0",
 };
 
