@@ -16,7 +16,7 @@ for (const i of settings) {
 function setVariable(variable, value) {
   root.style.setProperty(variable, value);
 }
-function getAssets(e) {
+function getAssets() {
   const assetsPreview = document.querySelector("#assets-preview");
   const svgs = [...assetsPreview.children].filter((i) => i.nodeName === "svg");
 
@@ -49,17 +49,18 @@ function getAssets(e) {
       "var(--foreground)",
       getComputedStyle(document.body).getPropertyValue("--foreground"),
     );
-    sSVG = sSVG.replaceAll(
-      "var(--radius)",
-      getComputedStyle(document.body).getPropertyValue("--radius" + "px"),
-    );
 
     img.src = "data:image/svg+xml;base64," + btoa(sSVG);
   }
 }
 
-function getTerminalCSS(e) {
-  return fetch("./terminal.css")
+async function getTerminalCSS() {
+  let pathname = "./terminal.css";
+  const s = new FormData(document.querySelector("#settings"));
+  if (s.get("type") == "terminal") {
+    pathname = "./terminal-theme.css";
+  }
+  return fetch(pathname)
     .then(function (req) {
       if (!req.ok) {
         alert("Oops, please try again");
@@ -71,7 +72,6 @@ function getTerminalCSS(e) {
       return req.text();
     })
     .then(function (data) {
-      const s = new FormData(document.querySelector("#settings"));
       data = data.replace(
         `--background: ${defaultValues["background"]}`,
         `--background: ${s.get("background")}`,
@@ -86,15 +86,8 @@ function getTerminalCSS(e) {
       );
       data = data.replace(
         `--radius: ${defaultValues["radius"]}`,
-        `--radius: ${s.get("radius")}px`,
+        `--radius: ${s.get("radius")}`,
       );
-
-      if (s.get("type") == "terminal") {
-        data = data.replace(
-          /@import url\(\"https\:\/\/fonts\.googleapis\.com\/.*\n+/,
-          "",
-        );
-      }
 
       const a = document.createElement("a");
       a.href = window.URL.createObjectURL(
@@ -134,12 +127,12 @@ assetsCheckbox.addEventListener("change", function (e) {
 });
 
 const settingsForm = document.querySelector("#settings");
-settingsForm.addEventListener("submit", function (e) {
+settingsForm.addEventListener("submit", async function (e) {
   e.preventDefault();
 
-  getTerminalCSS(e);
+  await getTerminalCSS();
 
   if (assetsCheckbox.checked) {
-    getAssets(e);
+    getAssets();
   }
 });
