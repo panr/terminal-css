@@ -1,0 +1,22 @@
+{
+  "Terminal (default)": {
+    "background": "#1a170f",
+    "foreground": "#eceae5",
+    "accent": "#eec35e"
+  },
+  "Pink Panther": {
+    "background": "#1a170f",
+    "foreground": "#eceae5",
+    "accent": "#ee82cf"
+  },
+  "Blue Screen of Death": {
+    "background": "#153489",
+    "foreground": "#eceae5",
+    "accent": "#5ea5ee"
+  },
+  "Vanilla Sky": {
+    "background": "#fff6fc",
+    "foreground": "#424140",
+    "accent": "#8f6a5e"
+  }
+}

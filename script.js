@@ -2,6 +2,7 @@ import { getAssets } from "./modules/assets.js";
 import { getTerminalCSS } from "./modules/terminal.js";
 import { defaultValues } from "./modules/variables.js";
 import "./modules/handlers.js"
+import "./modules/presets.js"
 
 // Init ------------------------------------------------------------------------
 const root = document.querySelector(":root");
