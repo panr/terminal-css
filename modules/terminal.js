@@ -1,4 +1,4 @@
-import { updateFont, updateHeading, updateVariables } from "./components.js";
+import { Components } from "./components.js";
 
 export async function getTerminalCSS(formData) {
   let pathname = "/styles/base.css";
@@ -14,9 +14,12 @@ export async function getTerminalCSS(formData) {
       return req.text();
     })
     .then(async function(styles) {
-      styles = updateVariables(styles, formData)
-      styles = await updateFont(styles, formData)
-      styles = await updateHeading(styles, formData)
+      let c = new Components(styles, formData)
+      c = await c.updateFont()
+        .then(c => c.updateVariables())
+        .then(c => c.updateHeading())
+
+      styles = c.getStyles()
 
       const a = document.createElement("a");
       a.href = window.URL.createObjectURL(

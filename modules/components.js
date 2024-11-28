@@ -6,41 +6,54 @@ export const components = {
   heading: `/* [[ HEADING ]] */`
 }
 
-export async function updateFont(styles, formData) {
-  if (formData.get("type") == "terminal") {
-    return styles
+export class Components {
+  constructor(styles, formData) {
+    this.styles = styles
+    this.formData = formData
   }
 
-  const res = await fetch("/styles/components/font.css")
-  const font = await res.text()
-  if (font) {
-    styles = styles.replace(components.font, font.trim())
-  }
-  return styles
-}
-
-export function updateVariables(styles, formData) {
-  const variables = `:root {
-  --background: ${formData.get("background")}
-  --foreground: ${formData.get("foreground")}
-  --accent: ${formData.get("accent")}
-  --radius: ${formData.get("radius")}
-  --font-size: ${formData.get("fontSize")}
-  --line-height: ${formData.get("lineHeight")}
+  updateVariables() {
+    const variables = `:root {
+  --background: ${this.formData.get("background")}
+  --foreground: ${this.formData.get("foreground")}
+  --accent: ${this.formData.get("accent")}
+  --radius: ${this.formData.get("radius")}
+  --font-size: ${this.formData.get("fontSize")}
+  --line-height: ${this.formData.get("lineHeight")}
 }`
-  styles = styles.replace(components.variables, variables.trim())
-  return styles
-}
-
-export async function updateHeading(styles, formData) {
-  if (formData.get("headingStyle") == "default") {
-    return styles
+    this.styles = this.styles.replace(components.variables, variables.trim())
+    return this
   }
 
-  const res = await fetch("/styles/components/heading.css")
-  const heading = await res.text()
-  if (heading) {
-    styles = styles.replace(components.heading, heading.trim())
+  async updateFont() {
+    if (this.formData.get("type") == "terminal") {
+      this.styles = this.styles.replace(components.font + "\n\n", "")
+      return this
+    }
+
+    const res = await fetch("/styles/components/font.css")
+    const font = await res.text()
+    if (font) {
+      this.styles = this.styles.replace(components.font, font.trim())
+    }
+    return this
   }
-  return styles
+
+  async updateHeading() {
+    if (this.formData.get("headingStyle") == "default") {
+      this.styles = this.styles.replace(components.heading + "\n\n", "")
+      return this
+    }
+
+    const res = await fetch("/styles/components/heading.css")
+    const heading = await res.text()
+    if (heading) {
+      this.styles = this.styles.replace(components.heading, heading.trim())
+    }
+    return this
+  }
+
+  getStyles() {
+    return this.styles
+  }
 }
