@@ -24,44 +24,13 @@
 	<meta property="og:url" content="https://panr.github.io/terminal-css/" />
 	<meta property="og:site_name" content="Terminal.css" />
 	<meta property="og:image" content="https://panr.github.io/terminal-css/og-image.png">
-	<link rel="shortcut icon" href="./favicon.png"">
+	<link rel="shortcut icon" href="./favicon.png">
 	<title>Terminal.css</title>
-	<link href="./terminal.css" rel="stylesheet" />
-	<style>
-		#headline { display: flex; white-space: nowrap; line-height: 1; }
-		#headline::after {
-			content: '';
-			background: repeating-linear-gradient(90deg, var(--accent), var(--accent) 2px, transparent 0, transparent 8px);
-			display: block;
-			width: 100%;
-			margin-left: 20px;
-			right: 10px;
-		}
-		#settings #attrs { display: flex; flex-wrap: wrap; align-items: center; }
-		#settings label { display: inline-flex; align-items: center; }
-		#settings table { width: 100%; max-width: 100%; margin-bottom: 0; table-layout: fixed; }
-		#settings table th, #settings table td { position: relative; }
-		#settings table input:not([type="checkbox"]), #settings table select { width: 100%; border: none; margin: 0; border-radius: 0 !important; }
-		#settings table input:not([type="checkbox"]) { position: absolute; top: 0; left: 0; height: 100%; }
-		#settings table input[type="number"] { padding: 0 10px; }
-		#settings table select { padding-top: 0; padding-bottom: 0; padding-left: 0; }
-		#settings #assets-preview svg { border: 1px solid }
-		#settings #terminal-info { border: 1px dashed var(--accent); padding: 2px 4px; margin-bottom: 5px; }
-		.hanchor {
-			position: absolute;
-			color: var(--accent);
-			font-weight: normal;
-			text-decoration: none;
-			margin-left: 10px;
-			visibility: hidden;
-		}
-		h1:hover .hanchor,
-		h2:hover .hanchor,
-		h3:hover .hanchor,
-		h4:hover .hanchor {
-			visibility: visible;
-		}
-	</style>
+	<link href="/styles/components/font.css" rel="stylesheet" id="componentsFont" />
+	<link href="/styles/components/variables.css" rel="stylesheet" id="componentsVariables" />
+	<link href="/styles/components/heading.css" rel="stylesheet" id="componentsHeading" />
+	<link href="/styles/base.css" rel="stylesheet" />
+	<link href="/styles/site.css" rel="stylesheet" />
 </head>
 
 <body style="padding: 20px">
@@ -73,23 +42,43 @@
 			<table>
 				<tbody>
 					<tr>
-						<th colspan="2" style="text-align: center;">Settings</th>
+						<th colspan="2" style="text-align: center;">Styling</th>
 					</tr>
 					<tr>
 						<th>Background</th>
-						<td><input type="color" id="background" name="background" onchange="setVariable('--background', this.value)"></td>
+						<td><input type="color" id="background" name="background" oninput="setVariable('--background', this.value)"></td>
 					</tr>
 					<tr>
 						<th>Foreground</th>
-						<td><input type="color" id="foreground" name="foreground" onchange="setVariable('--foreground', this.value)"></td>
+						<td><input type="color" id="foreground" name="foreground" oninput="setVariable('--foreground', this.value)"></td>
 					</tr>
 					<tr>
 						<th>Accent</th>
-						<td><input type="color" id="accent" name="accent" onchange="setVariable('--accent', this.value)"></td>
+						<td><input type="color" id="accent" name="accent" oninput="setVariable('--accent', this.value)"></td>
+					</tr>
+					<tr>
+						<th>Font Size</th>
+						<td><input type="text" id="fontSize" name="fontSize" oninput="setVariable('--font-size', this.value)"></td>
+					</tr>
+					<tr>
+						<th>Line Height</th>
+						<td><input type="text" id="lineHeight" name="lineHeight" oninput="setVariable('--line-height', this.value)"></td>
 					</tr>
 					<tr>
 						<th>Radius</th>
-						<td><input type="number" id="radius" name="radius" min="0" max="8" value="0" onchange="setVariable('--radius', this.value + 'px')"></td>
+						<td><input type="number" id="radius" name="radius" min="0" max="8" value="0" oninput="setVariable('--radius', this.value + 'px')"></td>
+					</tr>
+					<tr>
+						<th colspan="2" style="text-align: center;">Options</th>
+					</tr>
+					<tr>
+						<th>Heading Style</th>
+						<td>
+							<select name="headingStyle">
+								<option name="oneSize" value="oneSize">One size</option>
+								<option name="default" value="default">Browser's default</option>
+							</select>
+						</td>
 					</tr>
 					<tr>
 						<th>Type</th>
@@ -112,7 +101,9 @@
 				- <code>/static/og-image.png</code><br>
 			</div>
 			<div>
-				<label style="display: block; margin-bottom: 20px;"><input id="assets" type="checkbox" name="assets">&nbsp;Generate&nbsp;<strong>favicon</strong>&nbsp;and&nbsp;<strong>og-image</strong></label>
+				<div style="margin-bottom: 20px;">
+					<label style="display: inline-block;"><input id="assets" type="checkbox" name="assets">&nbsp;Generate&nbsp;<strong>favicon</strong>&nbsp;and&nbsp;<strong>og-image</strong></label>
+				</div>
 				<div id="assets-preview" hidden>
 					<svg id="template-favicon" width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" style="width: 50px; height: 50px;"><rect width="50" height="50" x="0" y="0" fill="var(--accent)" /></svg>
 					<svg id="template-og-image" width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 400px; height: 210px;">
@@ -332,7 +323,7 @@
 		Made by <a href="https://radoslawkoziel.pl" target="_blank">panr</a>. Derived from <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Terminal</a> theme. Source code on <a href="https://github.com/panr/terminal-css/" target="_blank">Github</a>.
 	</footer>
 
-	<script defer src="./script.js"></script>
+	<script defer type="module" src="./script.js"></script>
 </body>
 
 </html>

@@ -1,13 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Fira+Code&family=Fira+Code:wght@400;700&display=swap");
+/* [[ FONT ]] */
 
-:root {
-  --background: #1a170f;
-  --foreground: #eceae5;
-  --accent: #eec35e;
-  --font-size: 1rem;
-  --line-height: 1.54rem;
-  --radius: 0px;
-}
+/* [[ VARIABLES ]] */
 
 html {
   box-sizing: border-box;
@@ -48,39 +41,11 @@ body {
   color: color-mix(in srgb var(--foreground) 50%, black);
 }
 
-h1,
-h2 {
-  font-size: calc(var(--font-size) * 1.1);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
+/* [[ HEADING ]] */
 
-h1 {
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: calc(var(--font-size) * 0.2);
-}
-
-h3,
-h4,
-h5,
-h6 {
-  font-size: calc(var(--font-size) * 1.1);
-  letter-spacing: 0.04em;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ul,
-ol,
-img,
-figure,
-video,
+h1, h2, h3, h4, h5, h6,
+p, ul, ol,
+img, figure, video,
 table {
   margin: calc(var(--line-height) * 1.2) 0;
 }
