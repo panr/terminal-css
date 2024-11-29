@@ -1,0 +1,45 @@
+---
+
+env:
+  es6: true
+
+rules:
+  arrow-parens:
+    - 2
+    - as-needed
+  semi:
+    - 2
+    - always
+  class-methods-use-this: 0
+  comma-dangle:
+    - 2
+    - always-multiline
+  no-console:
+    - 2
+  no-unused-expressions: 0
+  no-param-reassign:
+    - 2
+    - props: false
+  no-useless-escape: 0
+  func-names: 0
+  quotes:
+    - 2
+    - double
+    - allowTemplateLiterals: true
+  no-underscore-dangle: 0
+  object-curly-newline: 0
+  function-paren-newline: 0
+  operator-linebreak:
+    - 2
+    - after
+  no-unused-vars:
+    - 2
+    - argsIgnorePattern: "^_"
+
+globals:
+  document: true
+  requestAnimationFrame: true
+  window: true
+  self: true
+  fetch: true
+  Headers: true
