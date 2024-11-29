@@ -38,7 +38,7 @@
 		<h1 id="headline">Terminal.css</h1>
 		<p>A stupid simple, custom set of semantic styles derived from <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Terminal</a> theme that you always wanted.</p>
 
-		<form id="settings" style="margin-bottom: 20px;">
+		<form id="settings">
 			<table>
 				<tbody>
 					<tr>
@@ -101,7 +101,7 @@
 				</tbody>
 			</table>
 			<div style="margin: 10px 0 20px; opacity: .6;">
-				Type:<br><strong>Standalone</strong> — includes FireCode font from Google Fonts;<br><strong>Terminal Theme</strong> — is prepared for Terminal Theme.
+				Type:<br><strong>Standalone</strong> — includes FireCode font (v6.2.0) from CDN<br><strong>Terminal Theme</strong> — is prepared for Terminal Theme and uses built-in FiraCode from the theme.
 			</div>
 			<div id="terminal-info" hidden style="margin: 20px 0;">
 				<strong>Terminal Theme</strong>: Remember to put all the downloaded files directly into <strong><code>/static/</code></strong> folder to make it work, like this:<br>
@@ -145,186 +145,204 @@
 		<hr>
 
 		<div>
-			<h2 id="headings">
-				Headings<a href="#headings" class="hanchor" arialabel="Anchor">#</a>
-			</h2>
+			<section>
+				<h2 id="headings">
+					Headings<a href="#headings" class="hanchor" arialabel="Anchor">#</a>
+				</h2>
 
-			<p>
-				The following HTML <code>&lt;h1&gt;</code>—<code>&lt;h6&gt;</code>
-				elements represent six levels of section headings.
-				<code>&lt;h1&gt;</code> is the highest section level while
-				<code>&lt;h6&gt;</code> is the lowest.
-			</p>
-
-			<h1 id="h1">h1</h1>
-			<h2 id="h2">h2</h2>
-			<h3 id="h3">h3</h3>
-			<h4 id="h4">h4</h4>
-			<h5 id="h5">h5</h5>
-			<h6 id="h6">h6</h6>
-
-			<h2 id="paragraph">
-				Paragraphs<a href="#paragraph" class="hanchor" arialabel="Anchor">#</a>
-			</h2>
-
-			<p>
-				This HTML element represents a paragraph. Paragraphs are usually represented in visual media as blocks of text separated from adjacent blocks by blank lines and/or first-line indentation, but HTML paragraphs can be any structural grouping of related content, such as images or form fields.
-			</p>
-
-			<p>
-				Paragraphs are block-level elements, and notably will automatically close if another block-level element is parsed before the closing tag
-			</p>
-
-			<h2 id="images">
-				Images<a href="#images" class="hanchor" arialabel="Anchor">#</a>
-			</h2>
-			<img src="./terminal-css.png" alt="Terminal.css preview" loading="lazy" >
-
-			<h3>Figures with caption</h3>
-			<figure style="margin: 10px 0;">
-				<img src="./terminal-css.png" alt="Terminal.css preview" loading="lazy" >
-				<figcaption>Terminal.css preview</figcaption>
-			</figure>
-
-			<h2 id="blockquotes">
-				Blockquotes<a href="#blockquotes" class="hanchor" arialabel="Anchor">#</a>
-			</h2>
-
-			<blockquote>
 				<p>
-					The blockquote element represents content that is quoted from
-					another source, optionally with a citation which must be within a
-					<code>footer</code> or <code>cite</code> element, and optionally
-					with in-line changes such as annotations and abbreviations.
+					The following HTML <code>&lt;h1&gt;</code>—<code>&lt;h6&gt;</code>
+					elements represent six levels of section headings.
+					<code>&lt;h1&gt;</code> is the highest section level while
+					<code>&lt;h6&gt;</code> is the lowest.
 				</p>
-			</blockquote>
 
-			<h2 id="buttons">
-				Buttons and links<a href="#buttons" class="hanchor" arialabel="Anchor">#</a>
-			</h2>
+				<h1 id="h1">Heading 1</h1>
+				<h2 id="h2">Heading 2</h2>
+				<h3 id="h3">Heading 3</h3>
+				<h4 id="h4">Heading 4</h4>
+				<h5 id="h5">Heading 5</h5>
+				<h6 id="h6">Heading 6</h6>
+			</section>
 
-			<button>Button</button>
-			<a href="">Link</a>
+			<section>
+				<h2 id="paragraph">
+					Paragraphs<a href="#paragraph" class="hanchor" arialabel="Anchor">#</a>
+				</h2>
+				<p>
+					This HTML element represents a paragraph. Paragraphs are usually represented in visual media as blocks of text separated from adjacent blocks by blank lines and/or first-line indentation, but HTML paragraphs can be any structural grouping of related content, such as images or form fields.
+				</p>
+				<p>
+					Paragraphs are block-level elements, and notably will automatically close if another block-level element is parsed before the closing tag
+				</p>
+			</section>
 
-			<h2 id="tables">
-				Tables<a href="#tables" class="hanchor" arialabel="Anchor">#</a>
-			</h2>
+			<section>
+				<h2 id="images">
+					Images<a href="#images" class="hanchor" arialabel="Anchor">#</a>
+				</h2>
+				<img src="./terminal-css.png" alt="Terminal.css preview" loading="lazy" >
 
-			<table>
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Age</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Bob</td>
-						<td>27</td>
-					</tr>
-					<tr>
-						<td>Alice</td>
-						<td>23</td>
-					</tr>
-				</tbody>
-			</table>
+				<h3>Figures with caption</h3>
+				<figure style="margin: 10px 0;">
+					<img src="./terminal-css.png" alt="Terminal.css preview" loading="lazy" >
+					<figcaption>Terminal.css preview</figcaption>
+				</figure>
+			</section>
 
-			<h2 id="forms">
-				Forms<a href="#forms" class="hanchor" arialabel="Anchor">#</a>
-			</h2>
+			<section>
+				<h2 id="blockquotes">
+					Blockquotes<a href="#blockquotes" class="hanchor" arialabel="Anchor">#</a>
+				</h2>
 
-			<fieldset>
-				<input type="text" placeholder="Type something" /><br />
-				<input type="number" placeholder="Insert number" /><br />
-				<input type="text" value="Input value" /><br />
-				<select>
-					<option value="1">Option 1</option>
-					<option value="2">Option 2</option>
-					<option value="3">Option 3</option>
-				</select><br />
-				<textarea placeholder="Insert a comment..."></textarea><br />
-				<label><input type="checkbox" /> I understand<br /></label>
-				<button type="submi">Submit</button>
-			</fieldset>
+				<blockquote>
+					<p>
+						The blockquote element represents content that is quoted from
+						another source, optionally with a citation which must be within a
+						<code>footer</code> or <code>cite</code> element, and optionally
+						with in-line changes such as annotations and abbreviations.
+					</p>
+				</blockquote>
+			</section>
 
-			<h2 id="code-blocks">
-				Code Blocks<a href="#code-blocks" class="hanchor" arialabel="Anchor">#</a>
-			</h2>
+			<section>
+				<h2 id="buttons">
+					Buttons and links<a href="#buttons" class="hanchor" arialabel="Anchor">#</a>
+				</h2>
 
-			<pre><code>pre {
+				<button>Button</button>
+				<a href="">Link</a>
+			</section>
+
+			<section>
+				<h2 id="tables">
+					Tables<a href="#tables" class="hanchor" arialabel="Anchor">#</a>
+				</h2>
+
+				<table>
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Age</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Bob</td>
+							<td>27</td>
+						</tr>
+						<tr>
+							<td>Alice</td>
+							<td>23</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section>
+				<h2 id="forms">
+					Forms<a href="#forms" class="hanchor" arialabel="Anchor">#</a>
+				</h2>
+
+				<fieldset>
+					<input type="text" placeholder="Type something" /><br />
+					<input type="number" placeholder="Insert number" /><br />
+					<input type="text" value="Input value" /><br />
+					<select>
+						<option value="1">Option 1</option>
+						<option value="2">Option 2</option>
+						<option value="3">Option 3</option>
+					</select><br />
+					<textarea placeholder="Insert a comment..."></textarea><br />
+					<label><input type="checkbox" /> I understand<br /></label>
+					<button type="submi">Submit</button>
+				</fieldset>
+			</section>
+
+			<section>
+					<h2 id="code-blocks">
+						Code Blocks<a href="#code-blocks" class="hanchor" arialabel="Anchor">#</a>
+					</h2>
+
+					<pre><code>pre {
 	display: block;
 	font-family: monospace;
 	white-space: pre;
 	margin: 1em 0;
 }</code></pre>
+			</section>
 
-			<h2 id="list-types">
-				List Types<a href="#list-types" class="hanchor" arialabel="Anchor">#</a>
-			</h2>
+			<section>
+				<h2 id="list-types">
+					List Types<a href="#list-types" class="hanchor" arialabel="Anchor">#</a>
+				</h2>
 
-			<h3 id="ordered-list">
-				Ordered List<a href="#ordered-list" class="hanchor" arialabel="Anchor">#</a>
-			</h3>
+				<h3 id="ordered-list">
+					Ordered List<a href="#ordered-list" class="hanchor" arialabel="Anchor">#</a>
+				</h3>
 
-			<ol>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-			</ol>
+				<ol>
+					<li>Item</li>
+					<li>Item</li>
+					<li>Item</li>
+					<li>Item</li>
+					<li>Item</li>
+					<li>Item</li>
+					<li>Item</li>
+					<li>Item</li>
+					<li>Item</li>
+					<li>Item</li>
+				</ol>
 
-			<h3 id="unordered-list">
-				Unordered List<a href="#unordered-list" class="hanchor" arialabel="Anchor">#</a>
-			</h3>
+				<h3 id="unordered-list">
+					Unordered List<a href="#unordered-list" class="hanchor" arialabel="Anchor">#</a>
+				</h3>
 
-			<ul>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-			</ul>
+				<ul>
+					<li>Item</li>
+					<li>Item</li>
+					<li>Item</li>
+					<li>Item</li>
+					<li>Item</li>
+					<li>Item</li>
+				</ul>
 
-			<h3 id="nested-list">
-				Nested list<a href="#nested-list" class="hanchor" arialabel="Anchor">#</a>
-			</h3>
+				<h3 id="nested-list">
+					Nested list<a href="#nested-list" class="hanchor" arialabel="Anchor">#</a>
+				</h3>
 
-			<ul>
-				<li>
-					Item
-					<ul>
-						<li>Nested item</li>
-						<li>Nested item</li>
-						<li>Nested item</li>
-					</ul>
-				</li>
-				<li>
-					Item
-					<ul>
-						<li>Nested item</li>
-						<li>Nested item</li>
-						<li>Nested item</li>
-					</ul>
-				</li>
-			</ul>
+				<ul>
+					<li>
+						Item
+						<ul>
+							<li>Nested item</li>
+							<li>Nested item</li>
+							<li>Nested item</li>
+						</ul>
+					</li>
+					<li>
+						Item
+						<ul>
+							<li>Nested item</li>
+							<li>Nested item</li>
+							<li>Nested item</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
 
-			<h2 id="other-elements--abbr-sub-sup-kbd-mark">
-				Other Elements — abbr, sub, sup, kbd, mark<a href="#other-elements--abbr-sub-sup-kbd-mark" class="hanchor"
-					arialabel="Anchor">#</a>
-			</h2>
+			<section>
+				<h2 id="other-elements--abbr-sub-sup-kbd-mark">
+					Other Elements — abbr, sub, sup, kbd, mark<a href="#other-elements--abbr-sub-sup-kbd-mark" class="hanchor"
+						arialabel="Anchor">#</a>
+				</h2>
 
-			<p>Text<sup>sup</sup></p>
-			<p>Text<sub>sub</sub></p>
-			<p><abbr title="Abbreviation">Abbr.</abbr></p>
-			<p><kbd>Kbd</kbd></p>
-			<p><mark>Marked</mark></p>
+				<p>Text<sup>sup</sup></p>
+				<p>Text<sub>sub</sub></p>
+				<p><abbr title="Abbreviation">Abbr.</abbr></p>
+				<p><kbd>Kbd</kbd></p>
+				<p><mark>Marked</mark></p>
+			</section>
 		</div>
 	</main>
 

@@ -7,6 +7,7 @@
   margin-left: 20px;
   right: 10px;
 }
+#settings { margin-bottom: 40px; }
 #settings #attrs { display: flex; flex-wrap: wrap; align-items: center; }
 #settings label { display: inline-flex; align-items: center; }
 #settings table { width: 100%; max-width: 100%; margin-bottom: 0; table-layout: fixed; }
@@ -31,4 +32,16 @@ h2:hover .hanchor,
 h3:hover .hanchor,
 h4:hover .hanchor {
   visibility: visible;
+}
+section {
+  border-top: 1px dashed color-mix(in srgb, var(--foreground) 20%, transparent);
+  padding: 40px 0;
+
+  > :first-child {
+    margin-top: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
 }
