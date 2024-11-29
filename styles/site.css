@@ -12,10 +12,13 @@
 #settings label { display: inline-flex; align-items: center; }
 #settings table { width: 100%; max-width: 100%; margin-bottom: 0; table-layout: fixed; }
 #settings table th, #settings table td { position: relative; }
-#settings table input:not([type="checkbox"]), #settings table select { width: 100%; border: none; margin: 0; border-radius: 0 !important; }
-#settings table input:not([type="checkbox"]) { position: absolute; top: 0; left: 0; height: 100%; }
-#settings table input[type="number"] { padding: 0 10px; }
-#settings table select { padding-top: 0; padding-bottom: 0; padding-left: 0; }
+/* #settings table th { color: color-mix(in srgb, var(--foreground) 50%, transparent); } */
+/* #settings table input:not([type="checkbox"]), #settings table select { width: 100%; border: none; margin: 0; border-radius: 0 !important; }
+#settings table input:not([type="checkbox"]) { position: absolute; top: 0; left: 0; height: 100%; } */
+#settings table input, #settings table select { width: 100%; line-height: 1; padding: 8px; }
+#settings table input[type="color"] { position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px; width: auto; height: auto; padding: 0; }
+/* #settings table input[type="number"] { padding: 0 10px; } */
+/* #settings table select { padding-top: 0; padding-bottom: 0; padding-left: 0; } */
 #settings #assets-preview { margin-bottom: 20px; }
 #settings #assets-preview svg { border: 1px solid }
 #settings #terminal-info { border: 1px dashed var(--accent); padding: 2px 4px; margin-bottom: 5px; }

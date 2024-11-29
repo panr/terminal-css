@@ -35,50 +35,44 @@
 
 <body style="padding: 20px">
 	<main style="width: 1024px; max-width: 100%;">
-		<h1 id="headline">Terminal.css</h1>
+		<h1 id="headline"><a href="/" style="color: inherit;">Terminal.css</a></h1>
 		<p>A stupid simple, custom set of semantic styles derived from <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Terminal</a> theme that you always wanted.</p>
 
 		<form id="settings">
 			<table>
 				<tbody>
 					<tr>
-						<th colspan="2" style="text-align: center;">Presets</th>
+						<th colspan="4" style="text-align: center;">Presets</th>
 					</tr>
 					<tr>
-						<td colspan="2">
+						<td colspan="4">
 							<select name="presets" id="presets">
 							</select>
 						</td>
 					</tr>
 					<tr>
-						<th colspan="2" style="text-align: center;">Styling</th>
+						<th colspan="4" style="text-align: center;">Styling</th>
 					</tr>
 					<tr>
 						<th>Background</th>
 						<td><input type="color" id="background" name="background" oninput="setVariable('--background', this.value)"></td>
-					</tr>
-					<tr>
-						<th>Foreground</th>
-						<td><input type="color" id="foreground" name="foreground" oninput="setVariable('--foreground', this.value)"></td>
-					</tr>
-					<tr>
-						<th>Accent</th>
-						<td><input type="color" id="accent" name="accent" oninput="setVariable('--accent', this.value)"></td>
-					</tr>
-					<tr>
 						<th>Font Size</th>
 						<td><input type="text" id="fontSize" name="fontSize" oninput="setVariable('--font-size', this.value)"></td>
 					</tr>
 					<tr>
+						<th>Foreground</th>
+						<td><input type="color" id="foreground" name="foreground" oninput="setVariable('--foreground', this.value)"></td>
 						<th>Line Height</th>
 						<td><input type="text" id="lineHeight" name="lineHeight" oninput="setVariable('--line-height', this.value)"></td>
 					</tr>
 					<tr>
+						<th>Accent</th>
+						<td><input type="color" id="accent" name="accent" oninput="setVariable('--accent', this.value)"></td>
 						<th>Radius</th>
 						<td><input type="number" id="radius" name="radius" min="0" max="8" value="0" oninput="setVariable('--radius', this.value + 'px')"></td>
 					</tr>
 					<tr>
-						<th colspan="2" style="text-align: center;">Options</th>
+						<th colspan="4" style="text-align: center;">Options</th>
 					</tr>
 					<tr>
 						<th>Heading Style</th>
@@ -88,8 +82,6 @@
 								<option name="default" value="default">Browser's default</option>
 							</select>
 						</td>
-					</tr>
-					<tr>
 						<th>Type</th>
 						<td>
 							<select name="type">
@@ -101,7 +93,7 @@
 				</tbody>
 			</table>
 			<div style="margin: 10px 0 20px; opacity: .6;">
-				Type:<br><strong>Standalone</strong> — includes FireCode font (v6.2.0) from CDN<br><strong>Terminal Theme</strong> — is prepared for Terminal Theme and uses built-in FiraCode from the theme.
+				Type:<br><strong>Standalone</strong> — includes FireCode font (v6.2.0) via CDN (cdn.jsdelivr.net)<br><strong>Terminal Theme</strong> — is prepared for Terminal Theme and uses built-in FiraCode from the theme.
 			</div>
 			<div id="terminal-info" hidden style="margin: 20px 0;">
 				<strong>Terminal Theme</strong>: Remember to put all the downloaded files directly into <strong><code>/static/</code></strong> folder to make it work, like this:<br>
@@ -139,13 +131,15 @@
 					</svg>
 				</div>
 				<button id="download" type="submit">Download Terminal.css</button>
+				<button class="copy-preset" data-output="json">Copy preset as JSON</button>
+				<button class="copy-preset" data-output="css">Copy preset as CSS</button>
 			</div>
 		</form>
 
 		<hr>
 
 		<div>
-			<section>
+			<section style="border: none;">
 				<h2 id="headings">
 					Headings<a href="#headings" class="hanchor" arialabel="Anchor">#</a>
 				</h2>

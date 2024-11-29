@@ -26,7 +26,7 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: var(--line-height);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   background-color: var(--background);
   color: var(--foreground);
   text-rendering: optimizeLegibility;
@@ -149,7 +149,7 @@ select {
       var(--foreground) 50%
     ),
     linear-gradient(135deg, var(--foreground) 50%, transparent 50%);
-  background-position: calc(100% - 20px), calc(100% - 1em);
+  background-position: calc(100% - 20px), calc(100% - 15px);
   background-size:
     5px 5px,
     5px 5px;
@@ -227,10 +227,14 @@ kbd {
     monospace !important;
   font-feature-settings: normal;
   background: color-mix(in srgb, var(--foreground) 5%, transparent);
-  color: var(--accent);
-  padding: 1px 6px;
+  color: color-mix(in srgb, var(--foreground) 5%, var(--accent));
+  padding: 0 6px;
   margin: 0 2px;
   font-size: 0.95rem;
+}
+
+code {
+  border: 1px solid color-mix(in srgb, var(--foreground) 25%, transparent);
 }
 
 kbd {
@@ -250,12 +254,12 @@ code code {
 pre {
   tab-size: 4;
   background: color-mix(in srgb, var(--foreground) 5%, transparent) !important;
-  color: var(--foreground);
+  color: color-mix(in srgb, var(--foreground) 5%, var(--accent));
   padding: 20px 10px;
   font-size: 0.95rem !important;
   overflow: auto;
   border-radius: var(--radius);
-  border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--foreground) 25%, transparent);
 }
 
 pre code {
@@ -339,4 +343,12 @@ hr {
   border: none;
   background: var(--accent);
   height: 2px;
+}
+
+/* Bold elements */
+h1, h2, h3, h4, h5, h6,
+b, strong,
+th,
+button {
+  font-weight: 600;
 }
