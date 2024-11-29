@@ -82,7 +82,17 @@
 								<option name="default" value="default">Browser's default</option>
 							</select>
 						</td>
-						<th>Type</th>
+						<th>
+							Type
+							<span class="popup">
+								<span class="popup-trigger">[?]</span>
+								<span class="popup-content">
+									<small style="font-weight: normal; text-transform: none;">
+										<strong>Standalone</strong> — includes FireCode font (v6.2.0) via CDN (cdn.jsdelivr.net)<br><br><strong>Terminal Theme</strong> — is prepared for Terminal Theme and uses built-in FiraCode from the theme.
+									</small>
+								</span>
+							</span>
+						</th>
 						<td>
 							<select name="type">
 								<option name="standalone" value="standalone">Standalone</option>
@@ -92,9 +102,6 @@
 					</tr>
 				</tbody>
 			</table>
-			<div style="margin: 10px 0 20px; opacity: .6;">
-				Type:<br><strong>Standalone</strong> — includes FireCode font (v6.2.0) via CDN (cdn.jsdelivr.net)<br><strong>Terminal Theme</strong> — is prepared for Terminal Theme and uses built-in FiraCode from the theme.
-			</div>
 			<div id="terminal-info" hidden style="margin: 20px 0;">
 				<strong>Terminal Theme</strong>: Remember to put all the downloaded files directly into <strong><code>/static/</code></strong> folder to make it work, like this:<br>
 				- <code>/static/terminal.css</code><br>
@@ -102,7 +109,7 @@
 				- <code>/static/og-image.png</code><br>
 			</div>
 			<div>
-				<div style="margin-bottom: 20px;">
+				<div style="margin: 20px 0;">
 					<label style="display: inline-block;"><input id="assets" type="checkbox" name="assets">&nbsp;Generate&nbsp;<strong>favicon</strong>&nbsp;and&nbsp;<strong>og-image</strong></label>
 				</div>
 				<div id="assets-preview" hidden>

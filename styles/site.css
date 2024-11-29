@@ -48,3 +48,26 @@ section {
     margin-bottom: 0;
   }
 }
+.popup {
+  position: relative;
+}
+.popup-trigger {
+  color: var(--accent);
+  cursor: help;
+}
+.popup-content {
+  display: none;
+  position: absolute;
+  top: auto;
+  bottom: 30px;
+  left: -50px;
+  right: auto;
+  width: 300px;
+  background: var(--accent);
+  color: var(--background);
+  padding: 15px;
+  z-index: 99;
+}
+.popup-trigger:hover ~ .popup-content {
+  display: block;
+}
