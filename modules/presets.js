@@ -2,7 +2,7 @@ import { isDark } from "./helpers.js";
 
 export const presetsInput = document.querySelector("#presets");
 
-const res = await fetch("/presets.json");
+const res = await fetch("./presets.json");
 const presets = await res.json();
 
 // At the moment it takes less than 1ms to create a grouped list of presets.
