@@ -39,98 +39,81 @@
 		<p>A stupid simple, custom set of semantic styles derived from <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Terminal</a> theme that you always wanted.</p>
 
 		<form id="settings">
-      <div class="table-wrapper">
-        <table>
-          <tbody>
-            <tr>
-              <th colspan="2" style="text-align: center;">Presets</th>
-            </tr>
-            <tr>
-              <td colspan="2">
-                <select name="presets" id="presets">
+      <div class="settings-wrapper">
+        <div class="settings-header">Presets</div>
+        <div class="settings-row">
+          <div class="settings-cell">
+            <div class="settings-input">
+              <select name="presets" id="presets"></select>
+            </div>
+          </div>
+        </div>
+        <div class="settings-header">Styling</div>
+        <div class="settings-row">
+          <div class="settings-col">
+            <div class="settings-cell">
+              <div class="settings-label">Background</div>
+              <div class="settings-input"><input type="color" id="background" name="background" oninput="setVariable('--background', this.value)"></div>
+            </div>
+            <div class="settings-cell">
+              <div class="settings-label">Foreground</div>
+              <div class="settings-input"><input type="color" id="foreground" name="foreground" oninput="setVariable('--foreground', this.value)"></div>
+            </div>
+            <div class="settings-cell">
+              <div class="settings-label">Accent</div>
+              <div class="settings-input"><input type="color" id="accent" name="accent" oninput="setVariable('--accent', this.value)"></div>
+            </div>
+          </div>
+          <div class="settings-col">
+            <div class="settings-cell">
+              <div class="settings-label">Font Size</div>
+              <div class="settings-input"><input type="text" id="fontSize" name="fontSize" oninput="setVariable('--font-size', this.value)"></div>
+            </div>
+            <div class="settings-cell">
+              <div class="settings-label">Line Height</div>
+              <div class="settings-input"><input type="text" id="lineHeight" name="lineHeight" oninput="setVariable('--line-height', this.value)"></div>
+            </div>
+            <div class="settings-cell">
+              <div class="settings-label">Radius</div>
+              <div class="settings-input"><input type="number" id="radius" name="radius" min="0" max="8" value="0" oninput="setVariable('--radius', this.value + 'px')"></div>
+            </div>
+          </div>
+        </div>
+        <div class="settings-header">Options</div>
+        <div class="settings-row">
+          <div class="settings-col">
+            <div class="settings-cell">
+              <div class="settings-label">Heading Style</div>
+              <div class="settings-input">
+                <select name="headingStyle">
+                  <option name="oneSize" value="oneSize">One size</option>
+                  <option name="default" value="default">Browser's default</option>
                 </select>
-              </td>
-            </tr>
-            <tr>
-              <th colspan="2" style="text-align: center;">Styling</th>
-            </tr>
-            <tr>
-              <td>
-                <table>
-                  <tr>
-                    <th>Background</th>
-                    <td><input type="color" id="background" name="background" oninput="setVariable('--background', this.value)"></td>
-                  </tr>
-                  <tr>
-                    <th>Foreground</th>
-                    <td><input type="color" id="foreground" name="foreground" oninput="setVariable('--foreground', this.value)"></td>
-                  </tr>
-                  <tr>
-                    <th>Accent</th>
-                    <td><input type="color" id="accent" name="accent" oninput="setVariable('--accent', this.value)"></td>
-                  </tr>
-                </table>
-              </td>
-              <td>
-                <table>
-                  <tr>
-                    <th>Font Size</th>
-                    <td><input type="text" id="fontSize" name="fontSize" oninput="setVariable('--font-size', this.value)"></td>
-                  </tr>
-                  <tr>
-                    <th>Line Height</th>
-                    <td><input type="text" id="lineHeight" name="lineHeight" oninput="setVariable('--line-height', this.value)"></td>
-                  </tr>
-                  <tr>
-                    <th>Radius</th>
-                    <td><input type="number" id="radius" name="radius" min="0" max="8" value="0" oninput="setVariable('--radius', this.value + 'px')"></td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-            <tr>
-              <th colspan="2" style="text-align: center;">Options</th>
-            </tr>
-            <tr>
-              <td>
-                <table>
-                  <tr>
-                    <th>Heading Style</th>
-                    <td>
-                      <select name="headingStyle">
-                        <option name="oneSize" value="oneSize">One size</option>
-                        <option name="default" value="default">Browser's default</option>
-                      </select>
-                    </td>
-                  </tr>
-                </table>
-              </td>
-              <td>
-                <table>
-                  <tr>
-                    <th>
-                      Type
-                      <span class="popup">
-                        <span class="popup-trigger">[?]</span>
-                        <span class="popup-content">
-                          <small style="font-weight: normal; text-transform: none;">
-                            <strong>Standalone</strong> — includes FireCode font (v6.2.0) via CDN (cdn.jsdelivr.net)<br><br><strong>Terminal Theme</strong> — is prepared for Terminal Theme and uses built-in FiraCode from the theme.
-                          </small>
-                        </span>
-                      </span>
-                    </th>
-                    <td>
-                      <select name="type">
-                        <option name="standalone" value="standalone">Standalone</option>
-                        <option name="terminal" value="terminal">Terminal Theme</option>
-                      </select>
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+              </div>
+            </div>
+          </div>
+          <div class="settings-col">
+            <div class="settings-cell">
+              <div class="settings-label">
+                Type
+                <span class="popup">
+                  <span class="popup-trigger" style="display: inline-block; margin-left: 5px;">[?]</span>
+                  <span class="popup-content">
+                    <small style="font-weight: normal; text-transform: none;">
+                      <strong>Standalone</strong> — includes FireCode font (v6.2.0) via CDN (cdn.jsdelivr.net)<br><br><strong>Terminal diveme</strong> — is prepared for Terminal Theme and uses built-in FiraCode from the theme.
+                    </small>
+                  </span>
+                </span>
+              </div>
+              <div class="settings-input">
+                <select name="type">
+                  <option name="standalone" value="standalone">Standalone</option>
+                  <option name="terminal" value="terminal">Terminal Theme</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 			<div id="terminal-info" hidden style="margin: 20px 0; padding: 10px;">
 				Remember to put all the downloaded files directly into <code>/static/</code> folder to make it work, like this:<br>
