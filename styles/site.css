@@ -1,13 +1,7 @@
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-  margin: 0;
-  padding: 0;
-}
-
 #headline {
-  display: flex; white-space: nowrap; line-height: 1;
+  display: flex;
+  white-space: nowrap;
+  line-height: 1;
 }
 
 #headline::after {
@@ -24,27 +18,58 @@
 }
 
 #settings #attrs {
-  display: flex; flex-wrap: wrap; align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 #settings label {
-  display: inline-flex; align-items: center;
+  display: inline-flex;
+  align-items: center;
 }
 
 #settings table {
-  width: 100%; max-width: 100%; margin-bottom: 0; table-layout: fixed;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  margin: 0;
+  table-layout: fixed;
+  border-collapse: collapse;
 }
 
-#settings table th, #settings table td {
+#settings td:has(table) {
+  padding: 0;
+}
+
+#settings table th,
+#settings table td {
   position: relative;
+  border-collapse: collapse;
 }
 
 #settings table input, #settings table select {
-  width: 100%; line-height: 1; padding: 8px;
+  width: 100%;
+  line-height: 1;
+  padding: 8px;
 }
 
 #settings table input[type="color"] {
-  position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px; width: auto; height: auto; padding: 0;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  width: auto;
+  height: auto;
+  padding: 0;
+}
+
+#settings .table-wrapper {
+  border: 2px solid var(--foreground);
+}
+
+#settings table {
+  border-style: hidden;
 }
 
 #settings #assets-preview {
@@ -52,10 +77,13 @@
 }
 
 #settings #assets-preview svg {
-   border: 1px solid }
+   border: 1px solid
+}
 
 #settings #terminal-info {
-  border: 1px dashed var(--accent); padding: 2px 4px; margin-bottom: 5px;
+  border: 1px dashed var(--accent);
+  padding: 2px 4px;
+  margin-bottom: 5px;
 }
 
 .hanchor {
@@ -115,10 +143,22 @@ section {
 }
 
 @media screen and (max-width: 600px) {
-  /* #settings tr td:not(:only-child),
-  #settings tr th:not(:only-child) {
-    display: inline-block;
+  #settings td {
+    display: block;
+    border-collapse: collapse;
+  }
+
+  #settings table {
+    padding: 0;
+  }
+
+  #settings table td {
     min-height: 50px;
-    width: 48%;
-  } */
+  }
+
+  #settings button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+  }
 }
