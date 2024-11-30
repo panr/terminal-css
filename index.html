@@ -24,98 +24,127 @@
 	<meta property="og:url" content="https://panr.github.io/terminal-css/" />
 	<meta property="og:site_name" content="Terminal.css" />
 	<meta property="og:image" content="https://panr.github.io/terminal-css/og-image.png">
-	<link rel="shortcut icon" href="./favicon.png"">
+	<link rel="shortcut icon" href="./favicon.png">
 	<title>Terminal.css</title>
-	<link href="./terminal.css" rel="stylesheet" />
-	<style>
-		#headline { display: flex; white-space: nowrap; line-height: 1; }
-		#headline::after {
-			content: '';
-			background: repeating-linear-gradient(90deg, var(--accent), var(--accent) 2px, transparent 0, transparent 8px);
-			display: block;
-			width: 100%;
-			margin-left: 20px;
-			right: 10px;
-		}
-		#settings #attrs { display: flex; flex-wrap: wrap; align-items: center; }
-		#settings label { display: inline-flex; align-items: center; }
-		#settings table { width: 100%; max-width: 100%; margin-bottom: 0; table-layout: fixed; }
-		#settings table th, #settings table td { position: relative; }
-		#settings table input:not([type="checkbox"]), #settings table select { width: 100%; border: none; margin: 0; border-radius: 0 !important; }
-		#settings table input:not([type="checkbox"]) { position: absolute; top: 0; left: 0; height: 100%; }
-		#settings table input[type="number"] { padding: 0 10px; }
-		#settings table select { padding-top: 0; padding-bottom: 0; padding-left: 0; }
-		#settings #assets-preview svg { border: 1px solid }
-		#settings #terminal-info { border: 1px dashed var(--accent); padding: 2px 4px; margin-bottom: 5px; }
-		.hanchor {
-			position: absolute;
-			color: var(--accent);
-			font-weight: normal;
-			text-decoration: none;
-			margin-left: 10px;
-			visibility: hidden;
-		}
-		h1:hover .hanchor,
-		h2:hover .hanchor,
-		h3:hover .hanchor,
-		h4:hover .hanchor {
-			visibility: visible;
-		}
-	</style>
+	<link href="/styles/components/font.css" rel="stylesheet" id="componentsFont" />
+	<link href="/styles/components/variables.css" rel="stylesheet" id="componentsVariables" />
+	<link href="/styles/components/heading.css" rel="stylesheet" id="componentsHeading" />
+	<link href="/styles/base.css" rel="stylesheet" />
+	<link href="/styles/site.css" rel="stylesheet" />
 </head>
 
 <body style="padding: 20px">
+  <dialog id="presetModal" class="dialog">
+    <h2>Welcome!</h2>
+    <p>Want to submit your own preset? <a href="https://github.com/panr/terminal-css" target="_blank">Go ahead!</a></p>
+    <form method="dialog">
+      <button autofocus>Close</button>
+    </form>
+  </dialog>
+
+  <dialog id="typeModal" class="dialog">
+    <div>
+      <h2>Choose the right type of the file</h2>
+      <p>
+        <strong>Standalone</strong> — includes FireCode font (v6.2.0) via CDN (cdn.jsdelivr.net)<br>
+        <strong>Terminal Theme</strong> — is prepared for Terminal Theme and uses built-in FiraCode from the theme.
+      </p>
+    </div>
+    <form method="dialog">
+      <button autofocus>Close</button>
+    </form>
+  </dialog>
+
 	<main style="width: 1024px; max-width: 100%;">
-		<h1 id="headline">Terminal.css</h1>
+		<h1 id="headline"><a href="/" style="color: inherit;">Terminal.css</a></h1>
 		<p>A stupid simple, custom set of semantic styles derived from <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Terminal</a> theme that you always wanted.</p>
 
-		<form id="settings" style="margin-bottom: 20px;">
-			<table>
-				<tbody>
-					<tr>
-						<th colspan="2" style="text-align: center;">Settings</th>
-					</tr>
-					<tr>
-						<th>Background</th>
-						<td><input type="color" id="background" name="background" onchange="setVariable('--background', this.value)"></td>
-					</tr>
-					<tr>
-						<th>Foreground</th>
-						<td><input type="color" id="foreground" name="foreground" onchange="setVariable('--foreground', this.value)"></td>
-					</tr>
-					<tr>
-						<th>Accent</th>
-						<td><input type="color" id="accent" name="accent" onchange="setVariable('--accent', this.value)"></td>
-					</tr>
-					<tr>
-						<th>Radius</th>
-						<td><input type="number" id="radius" name="radius" min="0" max="8" value="0" onchange="setVariable('--radius', this.value + 'px')"></td>
-					</tr>
-					<tr>
-						<th>Type</th>
-						<td>
-							<select name="type">
-								<option name="standalone" value="standalone">Standalone</option>
-								<option name="terminal" value="terminal">Terminal Theme</option>
-							</select>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			<div style="margin: 10px 0 20px; opacity: .6;">
-				Type:<br><strong>Standalone</strong> — includes FireCode font from Google Fonts;<br><strong>Terminal Theme</strong> — is prepared for Terminal Theme.
-			</div>
-			<div id="terminal-info" hidden style="margin: 20px 0;">
-				<strong>Terminal Theme</strong>: Remember to put all the downloaded files directly into <strong><code>/static/</code></strong> folder to make it work, like this:<br>
+		<form id="settings">
+      <div class="settings-wrapper">
+        <div class="settings-header">
+          Presets
+          <span class="dialog-trigger" onclick="presetModal.showModal()">[?]</span>
+        </div>
+        <div class="settings-row">
+          <div class="settings-cell" style="flex-direction: column;">
+            <div class="settings-input">
+              <select name="presets" id="presets"></select>
+            </div>
+          </div>
+        </div>
+        <div class="settings-header">Styling</div>
+        <div class="settings-row">
+          <div class="settings-col">
+            <div class="settings-cell">
+              <div class="settings-label">Background</div>
+              <div class="settings-input"><input type="color" id="background" name="background" oninput="setVariable('--background', this.value)"></div>
+            </div>
+            <div class="settings-cell">
+              <div class="settings-label">Foreground</div>
+              <div class="settings-input"><input type="color" id="foreground" name="foreground" oninput="setVariable('--foreground', this.value)"></div>
+            </div>
+            <div class="settings-cell">
+              <div class="settings-label">Accent</div>
+              <div class="settings-input"><input type="color" id="accent" name="accent" oninput="setVariable('--accent', this.value)"></div>
+            </div>
+          </div>
+          <div class="settings-col">
+            <div class="settings-cell">
+              <div class="settings-label">Font Size</div>
+              <div class="settings-input"><input type="text" id="fontSize" name="fontSize" oninput="setVariable('--font-size', this.value)"></div>
+            </div>
+            <div class="settings-cell">
+              <div class="settings-label">Line Height</div>
+              <div class="settings-input"><input type="text" id="lineHeight" name="lineHeight" oninput="setVariable('--line-height', this.value)"></div>
+            </div>
+            <div class="settings-cell">
+              <div class="settings-label">Radius</div>
+              <div class="settings-input"><input type="number" id="radius" name="radius" min="0" max="8" value="0" oninput="setVariable('--radius', this.value + 'px')"></div>
+            </div>
+          </div>
+        </div>
+        <div class="settings-header">Options</div>
+        <div class="settings-row">
+          <div class="settings-col">
+            <div class="settings-cell">
+              <div class="settings-label">Heading Style</div>
+              <div class="settings-input">
+                <select name="headingStyle">
+                  <option name="oneSize" value="oneSize">One size</option>
+                  <option name="default" value="default">Browser's default</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="settings-col">
+            <div class="settings-cell">
+              <div class="settings-label">
+                Type
+                <span class="dialog-trigger" onclick="typeModal.showModal()">[?]</span>
+              </div>
+              <div class="settings-input">
+                <select name="type">
+                  <option name="standalone" value="standalone">Standalone</option>
+                  <option name="terminal" value="terminal">Terminal Theme</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+			<div id="terminal-info" hidden style="margin: 20px 0; padding: 10px;">
+				Remember to put all the downloaded files directly into <code>/static/</code> folder to make it work, like this:<br>
 				- <code>/static/terminal.css</code><br>
 				- <code>/static/favicon.png</code><br>
 				- <code>/static/og-image.png</code><br>
 			</div>
 			<div>
-				<label style="display: block; margin-bottom: 20px;"><input id="assets" type="checkbox" name="assets">&nbsp;Generate&nbsp;<strong>favicon</strong>&nbsp;and&nbsp;<strong>og-image</strong></label>
+				<div style="margin: 20px 0;">
+					<label style="display: inline-block;"><input id="assets" type="checkbox" name="assets">&nbsp;Generate&nbsp;<strong>favicon</strong>&nbsp;and&nbsp;<strong>og-image</strong></label>
+				</div>
 				<div id="assets-preview" hidden>
 					<svg id="template-favicon" width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" style="width: 50px; height: 50px;"><rect width="50" height="50" x="0" y="0" fill="var(--accent)" /></svg>
-					<svg id="template-og-image" width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 400px; height: 210px;">
+					<svg id="template-og-image" width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 400px; height: 210px; max-width: 100%;">
 						<rect width="1200" height="630" fill="var(--background)"/>
 						<rect x="20" y="228" width="568" height="174" fill="var(--accent)"/>
 						<g>
@@ -139,192 +168,212 @@
 					</svg>
 				</div>
 				<button id="download" type="submit">Download Terminal.css</button>
+				<button class="copy-preset" data-output="json">Copy preset as JSON</button>
+				<button class="copy-preset" data-output="css">Copy preset as CSS</button>
 			</div>
 		</form>
 
 		<hr>
 
 		<div>
-			<h2 id="headings">
-				Headings<a href="#headings" class="hanchor" arialabel="Anchor">#</a>
-			</h2>
+			<section style="border: none;">
+				<h2 id="headings">
+					Headings<a href="#headings" class="hanchor" arialabel="Anchor">#</a>
+				</h2>
 
-			<p>
-				The following HTML <code>&lt;h1&gt;</code>—<code>&lt;h6&gt;</code>
-				elements represent six levels of section headings.
-				<code>&lt;h1&gt;</code> is the highest section level while
-				<code>&lt;h6&gt;</code> is the lowest.
-			</p>
-
-			<h1 id="h1">h1</h1>
-			<h2 id="h2">h2</h2>
-			<h3 id="h3">h3</h3>
-			<h4 id="h4">h4</h4>
-			<h5 id="h5">h5</h5>
-			<h6 id="h6">h6</h6>
-
-			<h2 id="paragraph">
-				Paragraphs<a href="#paragraph" class="hanchor" arialabel="Anchor">#</a>
-			</h2>
-
-			<p>
-				This HTML element represents a paragraph. Paragraphs are usually represented in visual media as blocks of text separated from adjacent blocks by blank lines and/or first-line indentation, but HTML paragraphs can be any structural grouping of related content, such as images or form fields.
-			</p>
-
-			<p>
-				Paragraphs are block-level elements, and notably will automatically close if another block-level element is parsed before the closing tag
-			</p>
-
-			<h2 id="images">
-				Images<a href="#images" class="hanchor" arialabel="Anchor">#</a>
-			</h2>
-			<img src="./terminal-css.png" alt="Terminal.css preview" loading="lazy" >
-
-			<h3>Figures with caption</h3>
-			<figure style="margin: 10px 0;">
-				<img src="./terminal-css.png" alt="Terminal.css preview" loading="lazy" >
-				<figcaption>Terminal.css preview</figcaption>
-			</figure>
-
-			<h2 id="blockquotes">
-				Blockquotes<a href="#blockquotes" class="hanchor" arialabel="Anchor">#</a>
-			</h2>
-
-			<blockquote>
 				<p>
-					The blockquote element represents content that is quoted from
-					another source, optionally with a citation which must be within a
-					<code>footer</code> or <code>cite</code> element, and optionally
-					with in-line changes such as annotations and abbreviations.
+					The following HTML <code>&lt;h1&gt;</code>—<code>&lt;h6&gt;</code>
+					elements represent six levels of section headings.
+					<code>&lt;h1&gt;</code> is the highest section level while
+					<code>&lt;h6&gt;</code> is the lowest.
 				</p>
-			</blockquote>
 
-			<h2 id="buttons">
-				Buttons and links<a href="#buttons" class="hanchor" arialabel="Anchor">#</a>
-			</h2>
+				<h1 id="h1">Heading 1</h1>
+				<h2 id="h2">Heading 2</h2>
+				<h3 id="h3">Heading 3</h3>
+				<h4 id="h4">Heading 4</h4>
+				<h5 id="h5">Heading 5</h5>
+				<h6 id="h6">Heading 6</h6>
+			</section>
 
-			<button>Button</button>
-			<a href="">Link</a>
+			<section>
+				<h2 id="paragraph">
+					Paragraphs<a href="#paragraph" class="hanchor" arialabel="Anchor">#</a>
+				</h2>
+				<p>
+					This HTML element represents a paragraph. Paragraphs are usually represented in visual media as blocks of text separated from adjacent blocks by blank lines and/or first-line indentation, but HTML paragraphs can be any structural grouping of related content, such as images or form fields.
+				</p>
+				<p>
+					Paragraphs are block-level elements, and notably will automatically close if another block-level element is parsed before the closing tag
+				</p>
+			</section>
 
-			<h2 id="tables">
-				Tables<a href="#tables" class="hanchor" arialabel="Anchor">#</a>
-			</h2>
+			<section>
+				<h2 id="images">
+					Images<a href="#images" class="hanchor" arialabel="Anchor">#</a>
+				</h2>
+				<img src="./terminal-css.png" alt="Terminal.css preview" loading="lazy" >
 
-			<table>
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Age</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Bob</td>
-						<td>27</td>
-					</tr>
-					<tr>
-						<td>Alice</td>
-						<td>23</td>
-					</tr>
-				</tbody>
-			</table>
+				<h3>Figures with caption</h3>
+				<figure style="margin: 10px 0;">
+					<img src="./terminal-css.png" alt="Terminal.css preview" loading="lazy" >
+					<figcaption>Terminal.css preview</figcaption>
+				</figure>
+			</section>
 
-			<h2 id="forms">
-				Forms<a href="#forms" class="hanchor" arialabel="Anchor">#</a>
-			</h2>
+			<section>
+				<h2 id="blockquotes">
+					Blockquotes<a href="#blockquotes" class="hanchor" arialabel="Anchor">#</a>
+				</h2>
 
-			<fieldset>
-				<input type="text" placeholder="Type something" /><br />
-				<input type="number" placeholder="Insert number" /><br />
-				<input type="text" value="Input value" /><br />
-				<select>
-					<option value="1">Option 1</option>
-					<option value="2">Option 2</option>
-					<option value="3">Option 3</option>
-				</select><br />
-				<textarea placeholder="Insert a comment..."></textarea><br />
-				<label><input type="checkbox" /> I understand<br /></label>
-				<button type="submi">Submit</button>
-			</fieldset>
+				<blockquote>
+					<p>
+						The blockquote element represents content that is quoted from
+						another source, optionally with a citation which must be within a
+						<code>footer</code> or <code>cite</code> element, and optionally
+						with in-line changes such as annotations and abbreviations.
+					</p>
+				</blockquote>
+			</section>
 
-			<h2 id="code-blocks">
-				Code Blocks<a href="#code-blocks" class="hanchor" arialabel="Anchor">#</a>
-			</h2>
+			<section>
+				<h2 id="buttons">
+					Buttons and links<a href="#buttons" class="hanchor" arialabel="Anchor">#</a>
+				</h2>
 
-			<pre><code>pre {
+				<button>Button</button>
+				<a href="">Link</a>
+			</section>
+
+			<section>
+				<h2 id="tables">
+					Tables<a href="#tables" class="hanchor" arialabel="Anchor">#</a>
+				</h2>
+
+				<table>
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Age</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Bob</td>
+							<td>27</td>
+						</tr>
+						<tr>
+							<td>Alice</td>
+							<td>23</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section>
+				<h2 id="forms">
+					Forms<a href="#forms" class="hanchor" arialabel="Anchor">#</a>
+				</h2>
+
+				<fieldset>
+					<input type="text" placeholder="Type something" /><br />
+					<input type="number" placeholder="Insert number" /><br />
+					<input type="text" value="Input value" /><br />
+					<select>
+						<option value="1">Option 1</option>
+						<option value="2">Option 2</option>
+						<option value="3">Option 3</option>
+					</select><br />
+					<textarea placeholder="Insert a comment..."></textarea><br />
+					<label><input type="checkbox" /> I understand<br /></label>
+					<button type="submi">Submit</button>
+				</fieldset>
+			</section>
+
+			<section>
+					<h2 id="code-blocks">
+						Code Blocks<a href="#code-blocks" class="hanchor" arialabel="Anchor">#</a>
+					</h2>
+
+					<pre><code>pre {
 	display: block;
 	font-family: monospace;
 	white-space: pre;
 	margin: 1em 0;
 }</code></pre>
+			</section>
 
-			<h2 id="list-types">
-				List Types<a href="#list-types" class="hanchor" arialabel="Anchor">#</a>
-			</h2>
+			<section>
+				<h2 id="list-types">
+					List Types<a href="#list-types" class="hanchor" arialabel="Anchor">#</a>
+				</h2>
 
-			<h3 id="ordered-list">
-				Ordered List<a href="#ordered-list" class="hanchor" arialabel="Anchor">#</a>
-			</h3>
+				<h3 id="ordered-list">
+					Ordered List<a href="#ordered-list" class="hanchor" arialabel="Anchor">#</a>
+				</h3>
 
-			<ol>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-			</ol>
+				<ol>
+					<li>Item</li>
+					<li>Item</li>
+					<li>Item</li>
+					<li>Item</li>
+					<li>Item</li>
+					<li>Item</li>
+					<li>Item</li>
+					<li>Item</li>
+					<li>Item</li>
+					<li>Item</li>
+				</ol>
 
-			<h3 id="unordered-list">
-				Unordered List<a href="#unordered-list" class="hanchor" arialabel="Anchor">#</a>
-			</h3>
+				<h3 id="unordered-list">
+					Unordered List<a href="#unordered-list" class="hanchor" arialabel="Anchor">#</a>
+				</h3>
 
-			<ul>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-			</ul>
+				<ul>
+					<li>Item</li>
+					<li>Item</li>
+					<li>Item</li>
+					<li>Item</li>
+					<li>Item</li>
+					<li>Item</li>
+				</ul>
 
-			<h3 id="nested-list">
-				Nested list<a href="#nested-list" class="hanchor" arialabel="Anchor">#</a>
-			</h3>
+				<h3 id="nested-list">
+					Nested list<a href="#nested-list" class="hanchor" arialabel="Anchor">#</a>
+				</h3>
 
-			<ul>
-				<li>
-					Item
-					<ul>
-						<li>Nested item</li>
-						<li>Nested item</li>
-						<li>Nested item</li>
-					</ul>
-				</li>
-				<li>
-					Item
-					<ul>
-						<li>Nested item</li>
-						<li>Nested item</li>
-						<li>Nested item</li>
-					</ul>
-				</li>
-			</ul>
+				<ul>
+					<li>
+						Item
+						<ul>
+							<li>Nested item</li>
+							<li>Nested item</li>
+							<li>Nested item</li>
+						</ul>
+					</li>
+					<li>
+						Item
+						<ul>
+							<li>Nested item</li>
+							<li>Nested item</li>
+							<li>Nested item</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
 
-			<h2 id="other-elements--abbr-sub-sup-kbd-mark">
-				Other Elements — abbr, sub, sup, kbd, mark<a href="#other-elements--abbr-sub-sup-kbd-mark" class="hanchor"
-					arialabel="Anchor">#</a>
-			</h2>
+			<section>
+				<h2 id="other-elements--abbr-sub-sup-kbd-mark">
+					Other Elements — abbr, sub, sup, kbd, mark<a href="#other-elements--abbr-sub-sup-kbd-mark" class="hanchor"
+						arialabel="Anchor">#</a>
+				</h2>
 
-			<p>Text<sup>sup</sup></p>
-			<p>Text<sub>sub</sub></p>
-			<p><abbr title="Abbreviation">Abbr.</abbr></p>
-			<p><kbd>Kbd</kbd></p>
-			<p><mark>Marked</mark></p>
+				<p>Text<sup>sup</sup></p>
+				<p>Text<sub>sub</sub></p>
+				<p><abbr title="Abbreviation">Abbr.</abbr></p>
+				<p><kbd>Kbd</kbd></p>
+				<p><mark>Marked</mark></p>
+			</section>
 		</div>
 	</main>
 
@@ -332,7 +381,7 @@
 		Made by <a href="https://radoslawkoziel.pl" target="_blank">panr</a>. Derived from <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Terminal</a> theme. Source code on <a href="https://github.com/panr/terminal-css/" target="_blank">Github</a>.
 	</footer>
 
-	<script defer src="./script.js"></script>
+	<script defer type="module" src="./script.js"></script>
 </body>
 
 </html>

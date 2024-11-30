@@ -1,0 +1,72 @@
+{
+  "Terminal Dark (default)": {
+    "background": "#1a170f",
+    "foreground": "#eceae5",
+    "accent": "#eec35e"
+  },
+  "Terminal Light": {
+    "background": "#ffffff",
+    "foreground": "#454545",
+    "accent": "#b9975c"
+  },
+  "Tahiti Gold": {
+    "background": "#FFFBF7",
+    "foreground": "#45372B",
+    "accent": "#DF7020"
+  },
+  "Hopbush": {
+    "background": "#FFF6F6",
+    "foreground": "#462D2D",
+    "accent": "#cc6099"
+  },
+  "Studio": {
+    "background": "#F7F4FF",
+    "foreground": "#403352",
+    "accent": "#6F49AB"
+  },
+  "Heliotrope": {
+    "background": "#25062A",
+    "foreground": "#F7E9F9",
+    "accent": "#E575F8"
+  },
+  "Viking": {
+    "background": "#0E1923",
+    "foreground": "#D6E8EE",
+    "accent": "#5ACCF0"
+  },
+  "White & Black": {
+    "background": "#ffffff",
+    "foreground": "#000000",
+    "accent": "#000000"
+  },
+  "Black & White": {
+    "background": "#000000",
+    "foreground": "#ffffff",
+    "accent": "#ffffff"
+  },
+  "Matrix": {
+    "background": "#000000",
+    "foreground": "#4EEE85",
+    "accent": "#4EEE85"
+  },
+  "Pink Panther": {
+    "background": "#1a170f",
+    "foreground": "#eceae5",
+    "accent": "#ee82cf"
+  },
+  "Blue Screen of Death": {
+    "background": "#153489",
+    "foreground": "#eceae5",
+    "accent": "#5ea5ee"
+  },
+  "Vanilla Sky": {
+    "background": "#fff4f2",
+    "foreground": "#424140",
+    "accent": "#8f6a5e"
+  },
+  "Tomato": {
+    "background": "#fff6f8",
+    "foreground": "#45372B",
+    "accent": "#ff6347"
+  }
+}

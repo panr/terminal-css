@@ -1,0 +1,220 @@
+#headline {
+  display: flex;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+#headline::after {
+  content: '';
+  background: repeating-linear-gradient(90deg, var(--accent), var(--accent) 2px, transparent 0, transparent 8px);
+  display: block;
+  width: 100%;
+  margin-left: 20px;
+  right: 10px;
+}
+
+#settings {
+  margin-bottom: 40px;
+}
+
+.settings-wrapper div {
+  position: relative;
+}
+
+.settings-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.settings-header::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  left: 0;
+  bottom: -1px;
+  border-bottom: 2px solid var(--foreground);
+}
+
+.settings-row {
+  display: flex;
+}
+
+.settings-col {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.settings-cell {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding: 10px;
+}
+
+.settings-cell::before {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  left: -2px;
+  bottom: 0;
+  border-left: 2px solid var(--foreground);
+}
+
+.settings-cell::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  left: 0;
+  bottom: -2px;
+  border-bottom: 2px solid var(--foreground);
+}
+
+.settings-cell > * {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.settings-input {
+  width: 100%;
+  min-height: 40px;
+}
+
+#settings #attrs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#settings label {
+  display: inline-flex;
+  align-items: center;
+}
+
+#settings input,
+#settings select {
+  width: 100%;
+  height: 100%;
+  line-height: 1;
+  padding: 8px;
+}
+
+#settings .settings-input input,
+#settings .settings-input select {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+  width: auto;
+  height: auto;
+}
+
+#settings .settings-input input[type="color"] {
+  padding: 0;
+}
+
+#settings input[type="checkbox"] {
+  width: auto !important;
+}
+
+#settings .settings-wrapper {
+  border: 2px solid var(--foreground);
+}
+
+#settings #assets-preview {
+  margin-bottom: 20px;
+}
+
+#settings #assets-preview svg {
+   border: 2px solid
+}
+
+#settings #terminal-info {
+  border: 1px dashed var(--accent);
+  padding: 2px 4px;
+  margin-bottom: 5px;
+}
+
+.hanchor {
+  position: absolute;
+  color: var(--accent);
+  font-weight: normal;
+  text-decoration: none;
+  margin-left: 10px;
+  visibility: hidden;
+}
+
+h1:hover .hanchor,
+h2:hover .hanchor,
+h3:hover .hanchor,
+h4:hover .hanchor {
+  visibility: visible;
+}
+
+section {
+  border-top: 1px dashed color-mix(in srgb, var(--foreground) 20%, transparent);
+  padding: 40px 0;
+
+  > :first-child {
+    margin-top: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+dialog {
+  background: var(--background);
+  border: 2px solid var(--accent);
+  color: var(--foreground);
+  padding: 20px;
+  margin: auto;
+  max-width: 600px;
+  z-index: 99;
+}
+
+dialog h2 {
+  margin-top: 0;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, .8);
+}
+
+.dialog-trigger {
+  display: inline-block;
+  margin-left: 5px;
+  font-weight: normal;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .settings-row {
+    flex-direction: column;
+  }
+
+  .settings-col {
+    width: 100%;
+  }
+
+  #settings button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  #settings button:last-child {
+    margin-bottom: 0;
+  }
+}

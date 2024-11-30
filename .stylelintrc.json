@@ -1,0 +1,13 @@
+{
+  "rules": {
+    "rule-empty-line-before": [
+      "always-multi-line",
+      {
+        "ignore": "first-nested"
+      }
+    ],
+    "color-function-notation": null,
+    "no-descending-specificity": null,
+    "selector-class-pattern": null
+  }
+}
