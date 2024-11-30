@@ -1,8 +1,8 @@
 import { getAssets } from "./modules/assets.js";
 import { getTerminalCSS } from "./modules/terminal.js";
 import { defaultValues } from "./modules/variables.js";
-import "./modules/handlers.js"
-import "./modules/presets.js"
+import "./modules/handlers.js";
+import "./modules/presets.js";
 
 // Init ------------------------------------------------------------------------
 const root = document.querySelector(":root");
@@ -18,13 +18,13 @@ for (const i of settings) {
 function setVariable(variable, value) {
   root.style.setProperty(variable, value);
 }
-window.setVariable = setVariable
+window.setVariable = setVariable;
 
-// Submit Dowload
+// Submit Download
 const settingsForm = document.querySelector("#settings");
 settingsForm.addEventListener("submit", async function (e) {
   e.preventDefault();
-  const formData = new FormData(e.target)
+  const formData = new FormData(e.target);
 
   await getTerminalCSS(formData);
 

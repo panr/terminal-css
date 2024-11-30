@@ -3,7 +3,7 @@ import { Components } from "./components.js";
 export async function getTerminalCSS(formData) {
   let pathname = "/styles/base.css";
   return fetch(pathname)
-    .then(function(req) {
+    .then(function (req) {
       if (!req.ok) {
         alert("Oops, please try again");
         throw new Error(
@@ -13,18 +13,17 @@ export async function getTerminalCSS(formData) {
 
       return req.text();
     })
-    .then(async function(styles) {
-      let c = new Components(styles, formData)
-      c = await c.updateFont()
+    .then(async function (styles) {
+      let c = new Components(styles, formData);
+      c = await c
+        .updateFont()
         .then(c => c.updateVariables())
-        .then(c => c.updateHeading())
+        .then(c => c.updateHeading());
 
-      styles = c.getStyles()
+      styles = c.getStyles();
 
       const a = document.createElement("a");
-      a.href = window.URL.createObjectURL(
-        new Blob([styles], { type: "text/css" }),
-      );
+      a.href = window.URL.createObjectURL(new Blob([styles], { type: "text/css" }));
       a.download = "terminal.css";
       a.click();
 

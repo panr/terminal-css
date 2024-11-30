@@ -1,6 +1,6 @@
 export function getAssets() {
   const assetsPreview = document.querySelector("#assets-preview");
-  const svgs = [...assetsPreview.children].filter((i) => i.nodeName === "svg");
+  const svgs = [...assetsPreview.children].filter(i => i.nodeName === "svg");
 
   for (const svg of svgs) {
     const canvas = document.createElement("canvas");
