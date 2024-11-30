@@ -84,6 +84,7 @@
 }
 
 .settings-input {
+  width: 100%;
   min-height: 40px;
 }
 
@@ -173,31 +174,30 @@ section {
   }
 }
 
-.popup {
-  position: relative;
-}
-
-.popup-trigger {
-  color: var(--accent);
-  cursor: help;
-}
-
-.popup-content {
-  display: none;
-  position: absolute;
-  top: auto;
-  bottom: 30px;
-  left: -50px;
-  right: auto;
-  width: 300px;
-  background: var(--accent);
-  color: var(--background);
-  padding: 15px;
+dialog {
+  background: var(--background);
+  border: 2px solid var(--accent);
+  color: var(--foreground);
+  padding: 20px;
+  margin: auto;
+  max-width: 600px;
   z-index: 99;
 }
 
-.popup-trigger:hover ~ .popup-content {
-  display: block;
+dialog h2 {
+  margin-top: 0;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, .8);
+}
+
+.dialog-trigger {
+  display: inline-block;
+  margin-left: 5px;
+  font-weight: normal;
+  color: var(--accent);
+  cursor: pointer;
 }
 
 @media screen and (max-width: 600px) {

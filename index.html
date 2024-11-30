@@ -34,15 +34,39 @@
 </head>
 
 <body style="padding: 20px">
+  <dialog id="presetModal" class="dialog">
+    <h2>Welcome!</h2>
+    <p>Want to submit you own preset? <a href="https://github.com/panr/terminal-css" target="_blank">Go ahead!</a></p>
+    <form method="dialog">
+      <button autofocus>Close</button>
+    </form>
+  </dialog>
+
+  <dialog id="typeModal" class="dialog">
+    <div>
+      <h2>Choose the right type of the file</h2>
+      <p>
+        <strong>Standalone</strong> — includes FireCode font (v6.2.0) via CDN (cdn.jsdelivr.net)<br>
+        <strong>Terminal diveme</strong> — is prepared for Terminal Theme and uses built-in FiraCode from the theme.
+      </p>
+    </div>
+    <form method="dialog">
+      <button autofocus>Close</button>
+    </form>
+  </dialog>
+
 	<main style="width: 1024px; max-width: 100%;">
 		<h1 id="headline"><a href="/" style="color: inherit;">Terminal.css</a></h1>
 		<p>A stupid simple, custom set of semantic styles derived from <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Terminal</a> theme that you always wanted.</p>
 
 		<form id="settings">
       <div class="settings-wrapper">
-        <div class="settings-header">Presets</div>
+        <div class="settings-header">
+          Presets
+          <span class="dialog-trigger" onclick="presetModal.showModal()">[?]</span>
+        </div>
         <div class="settings-row">
-          <div class="settings-cell">
+          <div class="settings-cell" style="flex-direction: column;">
             <div class="settings-input">
               <select name="presets" id="presets"></select>
             </div>
@@ -96,14 +120,7 @@
             <div class="settings-cell">
               <div class="settings-label">
                 Type
-                <span class="popup">
-                  <span class="popup-trigger" style="display: inline-block; margin-left: 5px;">[?]</span>
-                  <span class="popup-content">
-                    <small style="font-weight: normal; text-transform: none;">
-                      <strong>Standalone</strong> — includes FireCode font (v6.2.0) via CDN (cdn.jsdelivr.net)<br><br><strong>Terminal diveme</strong> — is prepared for Terminal Theme and uses built-in FiraCode from the theme.
-                    </small>
-                  </span>
-                </span>
+                <span class="dialog-trigger" onclick="typeModal.showModal()">[?]</span>
               </div>
               <div class="settings-input">
                 <select name="type">
