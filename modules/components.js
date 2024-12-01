@@ -14,12 +14,12 @@ export class Components {
 
   updateVariables() {
     const variables = `:root {
-  --background: ${this.formData.get("background")}
-  --foreground: ${this.formData.get("foreground")}
-  --accent: ${this.formData.get("accent")}
-  --radius: ${this.formData.get("radius")}
-  --font-size: ${this.formData.get("fontSize")}
-  --line-height: ${this.formData.get("lineHeight")}
+  --background: ${this.formData.get("background")};
+  --foreground: ${this.formData.get("foreground")};
+  --accent: ${this.formData.get("accent")};
+  --radius: ${this.formData.get("radius")};
+  --font-size: ${this.formData.get("fontSize")};
+  --line-height: ${this.formData.get("lineHeight")};
 }`;
     this.styles = this.styles.replace(components.variables, variables.trim());
     return this;

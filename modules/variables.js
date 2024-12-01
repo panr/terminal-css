@@ -3,6 +3,6 @@ export const defaultValues = {
   foreground: "#eceae5",
   accent: "#eec35e",
   fontSize: "1rem",
-  lineHeight: "1.54rem",
+  lineHeight: "1.54em",
   radius: "0",
 };
