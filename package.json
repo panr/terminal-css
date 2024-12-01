@@ -1,16 +1,16 @@
 {
-    "name": "terminal-css",
-    "version": "1.0.0",
-    "description": "A stupid simple, custom set of semantic styles derived from Terminal theme that you always wanted.)",
-    "main": "script.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "",
-    "license": "ISC",
-    "devDependencies": {
-        "eslint": "^9.16.0",
-        "prettier": "^3.4.1",
-        "stylelint": "^16.11.0"
-    }
+  "name": "terminal-css",
+  "version": "1.0.0",
+  "description": "A stupid simple, custom set of semantic styles derived from Terminal theme that you always wanted.)",
+  "main": "script.js",
+  "scripts": {
+    "preview": "rm -rf terminal-css && mkdir terminal-css && cp -r * ./terminal-css && http-server -o '/terminal-css' ."
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^9.16.0",
+    "prettier": "^3.4.1",
+    "stylelint": "^16.11.0"
+  }
 }
