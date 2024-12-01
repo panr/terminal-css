@@ -1,7 +1,7 @@
 import { Components } from "./components.js";
 
 export async function getTerminalCSS(formData) {
-  let pathname = "/styles/base.css";
+  let pathname = "./styles/base.css";
   return fetch(pathname)
     .then(function (req) {
       if (!req.ok) {

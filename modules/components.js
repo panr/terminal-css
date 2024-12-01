@@ -31,7 +31,7 @@ export class Components {
       return this;
     }
 
-    const res = await fetch("/styles/components/font.css");
+    const res = await fetch("./styles/components/font.css");
     const font = await res.text();
     if (font) {
       this.styles = this.styles.replace(components.font, font.trim());
@@ -45,7 +45,7 @@ export class Components {
       return this;
     }
 
-    const res = await fetch("/styles/components/heading.css");
+    const res = await fetch("./styles/components/heading.css");
     const heading = await res.text();
     if (heading) {
       this.styles = this.styles.replace(components.heading, heading.trim());
