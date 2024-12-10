@@ -1,5 +1,6 @@
 #headline {
   display: flex;
+  flex: 1;
   white-space: nowrap;
   line-height: 1;
 }
