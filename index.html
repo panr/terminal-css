@@ -65,15 +65,19 @@
       <div class="settings-wrapper">
         <div class="settings-header">
           Presets
-          <span class="dialog-trigger" onclick="presetModal.showModal()">[?]</span>
+          <!-- <span class="dialog-trigger" onclick="presetModal.showModal()">[?]</span> -->
         </div>
         <div class="settings-row">
           <div class="settings-cell" style="flex-direction: column;">
             <div class="settings-input">
               <select name="presets" id="presets"></select>
             </div>
+            <div style="margin-top: 10px;">
+              <a href="https://github.com/panr/terminal-css/blob/master/presets.json" target="_blank">-> Add your own preset <-</a>
+            </div>
           </div>
         </div>
+
         <div class="settings-header">Styling</div>
         <div class="settings-row">
           <div class="settings-col">
