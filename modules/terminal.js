@@ -35,6 +35,7 @@ export async function getTerminalCSS(formData) {
         fontSize: formData.get("fontSize"),
         lineHeight: formData.get("lineHeight"),
         type: formData.get("type"),
+        preset: formData.get("presets"),
       });
     });
 }
