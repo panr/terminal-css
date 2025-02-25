@@ -25,9 +25,9 @@
     "accent": "#6F49AB"
   },
   "Teal:" {
-  "background": "#1a170f",
-  "foreground": "#eceae5",
-  "accent": "#32858b"
+    "background": "#1a170f",
+    "foreground": "#eceae5",
+    "accent": "#32858b"
   },
   "Heliotrope": {
     "background": "#25062A",
