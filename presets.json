@@ -24,6 +24,11 @@
     "foreground": "#403352",
     "accent": "#6F49AB"
   },
+  "Teal": {
+    "background": "#1a170f",
+    "foreground": "#eceae5",
+    "accent": "#32858b"
+  },
   "Heliotrope": {
     "background": "#25062A",
     "foreground": "#F7E9F9",
