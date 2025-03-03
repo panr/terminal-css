@@ -26,29 +26,26 @@
 	<meta property="og:image" content="https://panr.github.io/terminal-css/og-image.png">
 	<link rel="shortcut icon" href="./favicon.png">
 	<title>Terminal.css</title>
-	<link href="./styles/components/font.css" rel="stylesheet" id="componentsFont" />
+  <!-- FONTS -->
+	<link href="./styles/components/fonts/fira-code.css" rel="stylesheet" id="componentsFontFiraCode" />
+	<link href="./styles/components/fonts/jetbrains-mono.css" rel="stylesheet" id="componentsFontJetBrainsMono" />
+  <!-- VARIABLES -->
 	<link href="./styles/components/variables.css" rel="stylesheet" id="componentsVariables" />
-	<link href="./styles/components/heading.css" rel="stylesheet" id="componentsHeading" />
-	<link href="./styles/base.css" rel="stylesheet" />
+  <!-- HEADINGS -->
+	<link href="./styles/components/headings/default.css" rel="stylesheet" id="componentsHeading" />
+	<link href="./styles/components/headings/one-size.css" rel="stylesheet" id="componentsHeadingOneSize" disabled />
+  <!-- REST -->
+	<link href="./styles/standalone.css" rel="stylesheet" />
 	<link href="./styles/site.css" rel="stylesheet" />
 </head>
 
 <body style="padding: 20px">
-
-  <dialog id="presetModal" class="dialog">
-    <h2>Welcome!</h2>
-    <p>Want to submit your own preset? <a href="https://github.com/panr/terminal-css/blob/master/presets.json" target="_blank">Go ahead!</a></p>
-    <form method="dialog">
-      <button autofocus>Close</button>
-    </form>
-  </dialog>
-
   <dialog id="typeModal" class="dialog">
     <div>
       <h2>Choose the right type of the file</h2>
       <p>
         <strong>Standalone</strong> — includes FireCode font (v6.2.0) via CDN (cdn.jsdelivr.net)<br>
-        <strong>Terminal Theme</strong> — is prepared for Terminal Theme and uses built-in FiraCode from the theme.
+        <strong>Terminal Theme</strong> — is prepared for Terminal Theme and uses built-in font from the theme.
       </p>
     </div>
     <form method="dialog">
@@ -58,87 +55,68 @@
 
 	<main style="width: 1024px; max-width: 100%;">
     <h1 id="headline"><a href="/" style="color: inherit;">Terminal.css</a></h1>
-    
+
 		<p>A simple, classless set of semantic styles derived from <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Terminal</a> theme that you always wanted.</p>
 
-		<form id="settings">
-      <div class="settings-wrapper">
-        <div class="settings-header">
-          Presets
-          <!-- <span class="dialog-trigger" onclick="presetModal.showModal()">[?]</span> -->
-        </div>
-        <div class="settings-row">
-          <div class="settings-cell" style="flex-direction: column;">
-            <div class="settings-input">
-              <select name="presets" id="presets"></select>
-            </div>
-            <div style="margin-top: 10px;">
-              <a href="https://github.com/panr/terminal-css/blob/master/presets.json" target="_blank">-> Add your own preset <-</a>
+    <div id="start-question" class="start-question">
+      <p>I'm here for a:</p>
+      <ul>
+        <li>
+          <label><input type="radio" name="type" value="standalone" style="margin-right: 10px;" checked>Standalone CSS file for my website</label>
+        </li>
+        <li>
+          <label><input type="radio" name="type" value="terminal" style="margin-right: 10px;">Terminal Theme color scheme</label>
+        </li>
+      </ul>
+    </div>
+
+    <form id="settings" class="settings">
+      <div class="settings-table">
+        <div id="settings-terminal-theme">
+          <div class="settings-row">
+            <div class="settings-cell">
+              <div class="settings-label">Presets</div>
+              <div class="settings-input"><select id="presets" name="presets"></select></div>
             </div>
           </div>
-        </div>
-
-        <div class="settings-header">Styling</div>
-        <div class="settings-row">
-          <div class="settings-col">
+          <div class="settings-row">
             <div class="settings-cell">
               <div class="settings-label">Background</div>
-              <div class="settings-input"><input type="color" id="background" name="background" oninput="setVariable('--background', this.value)"></div>
+              <div class="settings-input"><input type="color" name="background" oninput="setVariable('--background', this.value)"></div>
             </div>
             <div class="settings-cell">
               <div class="settings-label">Foreground</div>
-              <div class="settings-input"><input type="color" id="foreground" name="foreground" oninput="setVariable('--foreground', this.value)"></div>
+              <div class="settings-input"><input type="color" name="foreground" oninput="setVariable('--foreground', this.value)"></div>
             </div>
             <div class="settings-cell">
               <div class="settings-label">Accent</div>
-              <div class="settings-input"><input type="color" id="accent" name="accent" oninput="setVariable('--accent', this.value)"></div>
-            </div>
-          </div>
-          <div class="settings-col">
-            <div class="settings-cell">
-              <div class="settings-label">Font Size</div>
-              <div class="settings-input"><input type="text" id="fontSize" name="fontSize" oninput="setVariable('--font-size', this.value)"></div>
-            </div>
-            <div class="settings-cell">
-              <div class="settings-label">Line Height</div>
-              <div class="settings-input"><input type="text" id="lineHeight" name="lineHeight" oninput="setVariable('--line-height', this.value)"></div>
-            </div>
-            <div class="settings-cell">
-              <div class="settings-label">Radius</div>
-              <div class="settings-input"><input type="number" id="radius" name="radius" min="0" max="8" value="0" oninput="setVariable('--radius', this.value + 'px')"></div>
+              <div class="settings-input"><input type="color" name="accent" oninput="setVariable('--accent', this.value)"></div>
             </div>
           </div>
         </div>
-        <div class="settings-header">Options</div>
-        <div class="settings-row">
-          <div class="settings-col">
-            <div class="settings-cell">
-              <div class="settings-label">Heading Style</div>
-              <div class="settings-input">
-                <select name="headingStyle">
-                  <option name="oneSize" value="oneSize">One size</option>
-                  <option name="default" value="default">Browser's default</option>
-                </select>
-              </div>
+        <div id="settings-standalone" class="settings-row">
+          <div class="settings-cell">
+            <div class="settings-label">Heading Style</div>
+            <div class="settings-input">
+              <select name="headingStyle">
+                <option name="default" value="default">Default</option>
+                <option name="oneSize" value="oneSize">One size</option>
+              </select>
             </div>
           </div>
-          <div class="settings-col">
-            <div class="settings-cell">
-              <div class="settings-label">
-                Type
-                <span class="dialog-trigger" onclick="typeModal.showModal()">[?]</span>
-              </div>
-              <div class="settings-input">
-                <select name="type">
-                  <option name="standalone" value="standalone">Standalone</option>
-                  <option name="terminal" value="terminal">Terminal Theme</option>
-                </select>
-              </div>
+          <div class="settings-cell">
+            <div class="settings-label">Font Family<span class="dialog-trigger" onclick="typeModal.showModal()">[?]</span></div>
+            <div class="settings-input">
+              <select id="fontFamily" name="fontFamily">
+                <option name="fira-code" value="fira-code" selected>Fira Code</option>
+                <option name="jetbrains-mono" value="jetbrains-mono">JetBrains Mono</option>
+              </select>
             </div>
           </div>
         </div>
       </div>
-			<div id="terminal-info" hidden style="margin: 20px 0; padding: 10px;">
+
+      <div class="terminal-info" hidden style="margin: 20px 0; padding: 10px;">
 				Remember to put all the downloaded files directly into <code>/static/</code> folder to make it work, like this:<br>
 				- <code>/static/terminal.css</code><br>
 				- <code>/static/favicon.png</code><br>
@@ -174,10 +152,8 @@
 					</svg>
 				</div>
 				<button id="download" type="submit">Download Terminal.css</button>
-				<button class="copy-preset" data-output="json">Copy preset as JSON</button>
-				<button class="copy-preset" data-output="css">Copy preset as CSS</button>
 			</div>
-		</form>
+    </form>
 
 		<hr>
 

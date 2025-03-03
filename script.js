@@ -1,5 +1,5 @@
 import { getAssets } from "./modules/assets.js";
-import { getTerminalCSS } from "./modules/terminal.js";
+import { getTerminalCSS, getTerminalThemeCSS } from "./modules/terminal.js";
 import { defaultValues } from "./modules/variables.js";
 import "./modules/handlers.js";
 import "./modules/presets.js";
@@ -21,12 +21,17 @@ function setVariable(variable, value) {
 window.setVariable = setVariable;
 
 // Submit Download
-const settingsForm = document.querySelector("#settings");
-settingsForm.addEventListener("submit", async function (e) {
+const form = document.querySelector("#settings");
+form.addEventListener("submit", async function (e) {
   e.preventDefault();
   const formData = new FormData(e.target);
+  const type = document.querySelector(`#start-question input[name="type"]:checked`).value;
 
-  await getTerminalCSS(formData);
+  if (type === "terminal") {
+    await getTerminalThemeCSS(formData);
+  } else {
+    await getTerminalCSS(formData);
+  }
 
   const assetsCheckbox = document.querySelector("input#assets");
   if (assetsCheckbox.checked) {
