@@ -40,13 +40,10 @@
 </head>
 
 <body style="padding: 20px">
-  <dialog id="typeModal" class="dialog">
+  <dialog id="fontModal" class="dialog">
     <div>
-      <h2>Choose the right type of the file</h2>
-      <p>
-        <strong>Standalone</strong> — includes FireCode font (v6.2.0) via CDN (cdn.jsdelivr.net)<br>
-        <strong>Terminal Theme</strong> — is prepared for Terminal Theme and uses built-in font from the theme.
-      </p>
+      <h2>Font Family</h2>
+      <p>All fonts are provided via <strong>cdn.staticdelivr.com</strong> directly from Google Fonts and imported with `@import()` CSS function.</p>
     </div>
     <form method="dialog">
       <button autofocus>Close</button>
@@ -59,10 +56,10 @@
 		<p>A simple, classless set of semantic styles derived from <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Terminal</a> theme that you always wanted.</p>
 
     <div id="start-question" class="start-question">
-      <p>I'm here for a:</p>
+      <p>Please, choose the type of a file you want to download:</p>
       <ul>
         <li>
-          <label><input type="radio" name="type" value="standalone" style="margin-right: 10px;" checked>Standalone CSS file for my website</label>
+          <label><input type="radio" name="type" value="standalone" style="margin-right: 10px;" checked>Standalone CSS file for your website</label>
         </li>
         <li>
           <label><input type="radio" name="type" value="terminal" style="margin-right: 10px;">Terminal Theme color scheme</label>
@@ -73,9 +70,9 @@
     <form id="settings" class="settings">
       <div class="settings-table">
         <div id="settings-terminal-theme">
-          <div class="settings-row">
+          <div class="settings-row" style="font-weight: 600;">
             <div class="settings-cell">
-              <div class="settings-label">Presets</div>
+              <div class="settings-label" style="text-transform: uppercase;">Color Schema Presets</div>
               <div class="settings-input"><select id="presets" name="presets"></select></div>
             </div>
           </div>
@@ -105,7 +102,7 @@
             </div>
           </div>
           <div class="settings-cell">
-            <div class="settings-label">Font Family<span class="dialog-trigger" onclick="typeModal.showModal()">[?]</span></div>
+            <div class="settings-label">Font Family<span class="dialog-trigger" onclick="fontModal.showModal()">[?]</span></div>
             <div class="settings-input">
               <select id="fontFamily" name="fontFamily">
                 <option name="fira-code" value="fira-code" selected>Fira Code</option>

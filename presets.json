@@ -24,6 +24,11 @@
     "foreground": "#403352",
     "accent": "#6F49AB"
   },
+  "Teal": {
+    "background": "#1a170f",
+    "foreground": "#eceae5",
+    "accent": "#32858b"
+  },
   "Heliotrope": {
     "background": "#25062A",
     "foreground": "#F7E9F9",
@@ -65,7 +70,7 @@
     "accent": "#8f6a5e"
   },
   "Tomato": {
-    "background": "#fff6f8",
+    "background": "#fff7f1",
     "foreground": "#45372B",
     "accent": "#ff6347"
   }
