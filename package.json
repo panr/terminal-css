@@ -1,6 +1,6 @@
 {
   "name": "terminal-css",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A stupid simple, custom set of semantic styles derived from Terminal theme that you always wanted.)",
   "main": "script.js",
   "scripts": {

@@ -1,0 +1,21 @@
+h1 {
+  font-size: calc(var(--font-size) * 1.45);
+  letter-spacing: 0;
+}
+
+h2 {
+  font-size: calc(var(--font-size) * 1.35);
+  letter-spacing: 0;
+}
+
+h3 {
+  font-size: calc(var(--font-size) * 1.15);
+  letter-spacing: 0;
+}
+
+h4,
+h5,
+h6 {
+  font-size: calc(var(--font-size) * 1);
+  letter-spacing: 0;
+}
