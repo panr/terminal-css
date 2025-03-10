@@ -167,7 +167,7 @@ h4:hover .hanchor {
 
 section {
   border-top: 1px dashed color-mix(in srgb, var(--foreground) 20%, transparent);
-  padding: 40px 0;
+  padding: 25px 0;
 
   > :first-child {
     margin-top: 0;

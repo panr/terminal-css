@@ -41,7 +41,7 @@ h1, h2, h3, h4, h5, h6,
 p, ul, ol,
 img, figure, video,
 table {
-  margin: calc(var(--line-height) * 1.2) 0;
+  margin: 25px 0;
 }
 
 a {
@@ -350,6 +350,7 @@ hr {
 }
 
 /* Bold elements */
+
 h1, h2, h3, h4, h5, h6,
 b, strong,
 th,
