@@ -73,5 +73,10 @@
     "background": "#fff7f1",
     "foreground": "#45372B",
     "accent": "#ff6347"
+  },
+  "Pistachio": {
+    "background": "#1d2021",
+    "foreground": "#ebdbb2",
+    "accent": "#8ec07c"
   }
 }
