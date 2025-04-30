@@ -7,18 +7,64 @@ import "./modules/presets.js";
 // Init ------------------------------------------------------------------------
 const root = document.querySelector(":root");
 
-const settings = document.querySelectorAll("#settings input");
-for (const i of settings) {
-  if (defaultValues[i.name]) {
-    i.value = defaultValues[i.name];
-  }
+// Get references to all relevant inputs once
+const colorInputsLight = {
+  background: document.querySelector('input[name="background-light"]'),
+  foreground: document.querySelector('input[name="foreground-light"]'),
+  accent: document.querySelector('input[name="accent-light"]'),
+};
+const colorInputsDark = {
+  background: document.querySelector('input[name="background-dark"]'),
+  foreground: document.querySelector('input[name="foreground-dark"]'),
+  accent: document.querySelector('input[name="accent-dark"]'),
+};
+const previewThemeRadios = document.querySelectorAll('input[name="preview-theme"]');
+const headingStyleSelect = document.querySelector('select[name="headingStyle"]');
+const fontFamilySelect = document.querySelector('select[name="fontFamily"]');
+
+// Set initial default values for color inputs
+if (defaultValues["background"]) colorInputsLight.background.value = defaultValues["background"];
+if (defaultValues["foreground"]) colorInputsLight.foreground.value = defaultValues["foreground"];
+if (defaultValues["accent"]) colorInputsLight.accent.value = defaultValues["accent"];
+// Optionally set defaults for dark theme as well, or leave them empty/black/white
+// For now, let's mirror the light theme defaults initially
+if (defaultValues["background"]) colorInputsDark.background.value = defaultValues["background"];
+if (defaultValues["foreground"]) colorInputsDark.foreground.value = defaultValues["foreground"];
+if (defaultValues["accent"]) colorInputsDark.accent.value = defaultValues["accent"];
+
+// Set other defaults if they exist in defaultValues
+if (headingStyleSelect && defaultValues[headingStyleSelect.name]) {
+  headingStyleSelect.value = defaultValues[headingStyleSelect.name];
 }
+if (fontFamilySelect && defaultValues[fontFamilySelect.name]) {
+  fontFamilySelect.value = defaultValues[fontFamilySelect.name];
+}
+
 // -----------------------------------------------------------------------------
 
-function setVariable(variable, value) {
-  root.style.setProperty(variable, value);
+// Live Preview Update Function
+function updateLivePreview() {
+  const selectedTheme = document.querySelector('input[name="preview-theme"]:checked').value;
+  let sourceInputs;
+
+  if (selectedTheme === 'dark') {
+    sourceInputs = colorInputsDark;
+  } else {
+    sourceInputs = colorInputsLight;
+  }
+
+  root.style.setProperty('--background', sourceInputs.background.value);
+  root.style.setProperty('--foreground', sourceInputs.foreground.value);
+  root.style.setProperty('--accent', sourceInputs.accent.value);
+
+  // Note: Other variables like --radius, --font-size, --line-height are not
+  // dynamically updated in this preview but will be included in the download.
+  // If previewing them is needed, this function would need expansion.
 }
-window.setVariable = setVariable;
+window.updateLivePreview = updateLivePreview; // Make it globally accessible
+
+// Initial preview update on load
+updateLivePreview();
 
 // Submit Download
 const form = document.querySelector("#settings");
