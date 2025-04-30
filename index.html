@@ -72,22 +72,51 @@
         <div id="settings-terminal-theme">
           <div class="settings-row" style="font-weight: 600;">
             <div class="settings-cell">
-              <div class="settings-label" style="text-transform: uppercase;">Color Schema Presets</div>
-              <div class="settings-input"><select id="presets" name="presets"></select></div>
+              <div class="settings-label" style="text-transform: uppercase;">Color Schema Presets (light)</div>
+              <div class="settings-input"><select id="presets-light" name="presets-light"></select></div>
+            </div>
+          </div>
+          <div class="settings-row" style="font-weight: 600;">
+            <div class="settings-cell">
+              <div class="settings-label" style="text-transform: uppercase;">Color Schema Presets (dark)</div>
+              <div class="settings-input"><select id="presets-dark" name="presets-dark"></select></div>
             </div>
           </div>
           <div class="settings-row">
             <div class="settings-cell">
-              <div class="settings-label">Background</div>
-              <div class="settings-input"><input type="color" name="background" oninput="setVariable('--background', this.value)"></div>
+              <div class="settings-label">Background (light)</div>
+              <div class="settings-input"><input type="color" name="background-light" oninput="updateLivePreview()"></div>
             </div>
             <div class="settings-cell">
-              <div class="settings-label">Foreground</div>
-              <div class="settings-input"><input type="color" name="foreground" oninput="setVariable('--foreground', this.value)"></div>
+              <div class="settings-label">Foreground (light)</div>
+              <div class="settings-input"><input type="color" name="foreground-light" oninput="updateLivePreview()"></div>
             </div>
             <div class="settings-cell">
-              <div class="settings-label">Accent</div>
-              <div class="settings-input"><input type="color" name="accent" oninput="setVariable('--accent', this.value)"></div>
+              <div class="settings-label">Accent (light)</div>
+              <div class="settings-input"><input type="color" name="accent-light" oninput="updateLivePreview()"></div>
+            </div>
+          </div>
+          <div class="settings-row">
+            <div class="settings-cell">
+              <div class="settings-label">Background (dark)</div>
+              <div class="settings-input"><input type="color" name="background-dark" oninput="updateLivePreview()"></div>
+            </div>
+            <div class="settings-cell">
+              <div class="settings-label">Foreground (dark)</div>
+              <div class="settings-input"><input type="color" name="foreground-dark" oninput="updateLivePreview()"></div>
+            </div>
+            <div class="settings-cell">
+              <div class="settings-label">Accent (dark)</div>
+              <div class="settings-input"><input type="color" name="accent-dark" oninput="updateLivePreview()"></div>
+            </div>
+          </div>
+          <div class="settings-row">
+            <div class="settings-cell">
+              <div class="settings-label">Preview Theme</div>
+			  <div class="settings-input">
+				<label style="margin-right: 20px;"><input type="radio" name="preview-theme" style="min-height: 1em; margin-right: 10px;" value="light" onchange="updateLivePreview()" checked> Light</label>
+				<label><input type="radio" name="preview-theme" style="min-height: 1em; margin-right: 10px;" value="dark" onchange="updateLivePreview()"> Dark</label>
+			  </div>
             </div>
           </div>
         </div>

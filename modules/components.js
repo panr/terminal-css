@@ -13,13 +13,35 @@ export class Standalone {
   }
 
   updateVariables() {
+    // Get light theme values (use names without '-light' suffix for standalone)
+    const bgLight = this.formData.get("background-light") || defaultValues["background"];
+    const fgLight = this.formData.get("foreground-light") || defaultValues["foreground"];
+    const accentLight = this.formData.get("accent-light") || defaultValues["accent"];
+
+    // Get dark theme values
+    const bgDark = this.formData.get("background-dark") || bgLight; // Default dark to light if not provided
+    const fgDark = this.formData.get("foreground-dark") || fgLight;
+    const accentDark = this.formData.get("accent-dark") || accentLight;
+
+    // Construct the hybrid CSS variables block
     const variables = `:root {
-  --background: ${this.formData.get("background")};
-  --foreground: ${this.formData.get("foreground")};
-  --accent: ${this.formData.get("accent")};
+  --background: ${bgLight};
+  --foreground: ${fgLight};
+  --accent: ${accentLight};
   --radius: ${defaultValues["radius"]};
   --font-size: ${defaultValues["fontSize"]};
   --line-height: ${defaultValues["lineHeight"]};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: ${bgDark};
+    --foreground: ${fgDark};
+    --accent: ${accentDark};
+    --radius: ${defaultValues["radius"]};
+    --font-size: ${defaultValues["fontSize"]};
+    --line-height: ${defaultValues["lineHeight"]};
+  }
 }`;
     this.styles = this.styles.replace(components.variables, variables.trim());
     return this;
@@ -93,11 +115,31 @@ export class TerminalTheme {
   }
 
   updateVariables() {
+    // Get light theme values
+    const bgLight = this.formData.get("background-light") || defaultValues["background"];
+    const fgLight = this.formData.get("foreground-light") || defaultValues["foreground"];
+    const accentLight = this.formData.get("accent-light") || defaultValues["accent"];
+
+    // Get dark theme values
+    const bgDark = this.formData.get("background-dark") || bgLight; // Default dark to light if not provided
+    const fgDark = this.formData.get("foreground-dark") || fgLight;
+    const accentDark = this.formData.get("accent-dark") || accentLight;
+
+    // Construct the hybrid CSS variables block
     const variables = `:root {
-  --background: ${this.formData.get("background")};
-  --foreground: ${this.formData.get("foreground")};
-  --accent: ${this.formData.get("accent")};
+  --background: ${bgLight};
+  --foreground: ${fgLight};
+  --accent: ${accentLight};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: ${bgDark};
+    --foreground: ${fgDark};
+    --accent: ${accentDark};
+  }
 }`;
+    // Replace the placeholder in the base styles
     this.styles = this.styles.replace(components.variables, variables.trim());
     return this;
   }
